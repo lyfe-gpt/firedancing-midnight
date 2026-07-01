@@ -1,0 +1,82 @@
+{
+  "shop": "Firedancing",
+  "url": "https://lyfe-gpt.github.io/firedancing-midnight/",
+  "currency": "USD",
+  "returnPolicy": "All sales final. Every piece is hand-cut and one of a kind.",
+  "care": "Hand wash cold, lay flat to dry.",
+  "sizeChart": [
+    { "size": "XS", "bust": "30-32", "waist": "23-25", "hip": "33-35" },
+    { "size": "S", "bust": "32-34", "waist": "25-27", "hip": "35-37" },
+    { "size": "M", "bust": "34-36", "waist": "27-29", "hip": "37-39" },
+    { "size": "L", "bust": "36-38", "waist": "29-31", "hip": "39-41" },
+    { "size": "XL", "bust": "38-41", "waist": "31-34", "hip": "41-44" },
+    { "size": "2XL", "bust": "41-44", "waist": "34-37", "hip": "44-47" },
+    { "size": "3XL", "bust": "44-47", "waist": "37-40", "hip": "47-50" },
+    { "size": "4XL", "bust": "47-50", "waist": "40-43", "hip": "50-53" }
+  ],
+  "measurementUnit": "inches",
+  "products": [
+    {
+      "id": "groove-catsuit",
+      "name": "Groove Slitweave Catsuit",
+      "type": "ready-to-ship",
+      "url": "https://lyfe-gpt.github.io/firedancing-midnight/catsuit.html",
+      "price": 148.0,
+      "material": "Four-way-stretch slitweave",
+      "colors": ["Onyx Black", "Ghost White"],
+      "image": "https://lyfe-gpt.github.io/firedancing-midnight/assets/product/black-catsuit-1.jpg",
+      "variants": [
+        { "sku": "GROOVE-CATSUIT-XS", "size": "XS", "price": 148.0, "inStock": true },
+        { "sku": "GROOVE-CATSUIT-S", "size": "S", "price": 148.0, "inStock": true },
+        { "sku": "GROOVE-CATSUIT-M", "size": "M", "price": 148.0, "inStock": false },
+        { "sku": "GROOVE-CATSUIT-L", "size": "L", "price": 148.0, "inStock": true },
+        { "sku": "GROOVE-CATSUIT-XL", "size": "XL", "price": 148.0, "inStock": true },
+        { "sku": "GROOVE-CATSUIT-2XL", "size": "2XL", "price": 148.0, "inStock": true },
+        { "sku": "GROOVE-CATSUIT-3XL", "size": "3XL", "price": 148.0, "inStock": true },
+        { "sku": "GROOVE-CATSUIT-4XL", "size": "4XL", "price": 148.0, "inStock": false }
+      ]
+    },
+    {
+      "id": "ember-bodysuit",
+      "name": "Ember Slitweave Bodysuit",
+      "type": "ready-to-ship",
+      "url": "https://lyfe-gpt.github.io/firedancing-midnight/bodysuit.html",
+      "price": 128.0,
+      "material": "Four-way-stretch slitweave",
+      "colors": ["Onyx Black"],
+      "image": "https://lyfe-gpt.github.io/firedancing-midnight/assets/product/black-bodysuit-2.jpg",
+      "variants": [
+        { "sku": "EMBER-BODYSUIT-XS", "size": "XS", "price": 128.0, "inStock": true },
+        { "sku": "EMBER-BODYSUIT-S", "size": "S", "price": 128.0, "inStock": true },
+        { "sku": "EMBER-BODYSUIT-M", "size": "M", "price": 128.0, "inStock": false },
+        { "sku": "EMBER-BODYSUIT-L", "size": "L", "price": 128.0, "inStock": true },
+        { "sku": "EMBER-BODYSUIT-XL", "size": "XL", "price": 128.0, "inStock": true },
+        { "sku": "EMBER-BODYSUIT-2XL", "size": "2XL", "price": 128.0, "inStock": true },
+        { "sku": "EMBER-BODYSUIT-3XL", "size": "3XL", "price": 128.0, "inStock": true },
+        { "sku": "EMBER-BODYSUIT-4XL", "size": "4XL", "price": 128.0, "inStock": false }
+      ]
+    },
+    {
+      "id": "made-to-order",
+      "name": "Made-to-Order Slitweave (Build your fit)",
+      "type": "made-to-order",
+      "url": "https://lyfe-gpt.github.io/firedancing-midnight/made-to-order.html",
+      "leadTime": "2 to 4 weeks",
+      "priceFrom": 130.0,
+      "priceTo": 240.0,
+      "material": "Four-way-stretch slitweave",
+      "colors": ["Onyx Black", "Ghost White"],
+      "image": "https://lyfe-gpt.github.io/firedancing-midnight/assets/product/mto-duo-1.jpg",
+      "base": [
+        { "silhouette": "bodysuit", "price": 130.0 },
+        { "silhouette": "catsuit", "price": 150.0 }
+      ],
+      "addOns": [
+        { "name": "Dye finish", "price": 40.0 },
+        { "name": "Metal ties", "price": 25.0 },
+        { "name": "Chain belt", "price": 25.0 }
+      ],
+      "fitOptions": ["length", "neckline", "cleavage depth", "side-slit width", "size", "custom measurements"]
+    }
+  ]
+}

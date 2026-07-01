@@ -25,4 +25,19 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://lyfe-gpt.github.io/firedancing-midnight/maker.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lyfe-gpt.github.io/firedancing-midnight/post-slitweave-care.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://lyfe-gpt.github.io/firedancing-midnight/post-cloth-vs-metal-ties.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>

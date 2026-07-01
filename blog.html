@@ -16,6 +16,8 @@
 <meta name="twitter:title" content="Journal · Firedancing">
 <meta name="twitter:description" content="Slitweave care, behind-the-seams notes, and the making of hand-cut stagewear.">
 <meta name="twitter:image" content="https://lyfe-gpt.github.io/firedancing-midnight/assets/product/white-catsuit-1.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -28,7 +30,7 @@ a{color:inherit;text-decoration:none}
 <body>
 <div id="site-header"></div>
 
-<div style="max-width:440px;margin:0 auto;background:#0d0d0d;overflow-x:hidden">
+<div id="main" style="max-width:440px;margin:0 auto;background:#0d0d0d;overflow-x:hidden">
 
   <!-- HEADER -->
   <div style="padding:34px 20px 8px">
@@ -46,8 +48,8 @@ a{color:inherit;text-decoration:none}
   </div>
 
   <!-- FEATURED POST -->
-  <a href="#" style="display:block;margin:18px 16px 0;border-radius:18px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.1)">
-    <img src="assets/product/white-catsuit-1.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" alt="Featured post" />
+  <a href="post-slitweave-care.html" style="display:block;margin:18px 16px 0;border-radius:18px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.1)">
+    <img src="assets/product/white-catsuit-1.jpg" width="400" height="300" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" alt="Ghost White slitweave catsuit, slitweave care guide" />
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9),transparent 60%)"></div>
     <div style="position:absolute;left:0;right:0;bottom:0;padding:20px">
       <div style="font-size:11px;font-weight:800;letter-spacing:.1em;color:#ff5c5c;margin-bottom:8px">CARE · 4 MIN READ</div>
@@ -77,17 +79,17 @@ a{color:inherit;text-decoration:none}
 
 <script src="assets/cart.js"></script>
 <script src="assets/cart-drawer.js"></script>
-<script src="assets/site-nav.js?v=6"></script>
+<script src="assets/site-nav.js?v=7"></script>
 <script>
 (function () {
   var posts = [
-    { tag: 'BEHIND THE SEAMS', read: '3 min', img: 'assets/product/black-catsuit-1.jpg', title: 'Cloth vs metal ties: which to pick', excerpt: 'One is soft and quiet, one is hardware and shine. Here is how to choose for the stage.' },
-    { tag: 'FESTIVAL', read: '5 min', img: 'assets/product/duo-lifestyle.jpg', title: 'Building a duo look that reads from the back row', excerpt: 'Black and white, matched cuts, and why contrast wins under stage light.' },
-    { tag: 'THE MAKER', read: '6 min', img: 'assets/product/black-bodysuit-2.jpg', title: 'Why every piece is still cut by hand', excerpt: 'The case for slow, one-of-one stagewear in a world of mass drops.' },
-    { tag: 'CARE', read: '2 min', img: 'assets/product/white-catsuit-1.jpg', title: 'Storing your slitweave between sets', excerpt: 'Keep the weave from snagging and the ties from tangling on the road.' }
+    { tag: 'BEHIND THE SEAMS', read: '3 min', img: 'assets/product/black-catsuit-1.jpg', title: 'Cloth vs metal ties: which to pick', excerpt: 'One is soft and quiet, one is hardware and shine. Here is how to choose for the stage.', href: 'post-cloth-vs-metal-ties.html' },
+    { tag: 'CARE', read: '4 min', img: 'assets/product/white-catsuit-1.jpg', title: 'How to wash a slitweave without wrecking it', excerpt: 'The five-minute routine that keeps the weave tight and the stretch alive.', href: 'post-slitweave-care.html' },
+    { tag: 'THE MAKER', read: '3 min', img: 'assets/product/maker.jpg', title: 'Made by one pair of hands', excerpt: 'Why every piece is still cut, woven and finished by one fire performer.', href: 'maker.html' },
+    { tag: 'FESTIVAL', read: '5 min', img: 'assets/product/duo-lifestyle.jpg', title: 'Building a duo look that reads from the back row', excerpt: 'Black and white, matched cuts, and why contrast wins under stage light.', href: '' }
   ];
   document.getElementById('posts').innerHTML = posts.map(function (p) {
-    return '<a href="#" style="display:flex;gap:14px;align-items:center">' +
+    return '<a href="' + (p.href || '#') + '"' + (p.href ? '' : ' aria-disabled="true"') + ' style="display:flex;gap:14px;align-items:center' + (p.href ? '' : ';opacity:.55') + '">' +
       '<div style="flex:0 0 108px;border-radius:12px;overflow:hidden;background:#000"><img src="' + p.img + '" loading="lazy" decoding="async" style="width:108px;height:88px;object-fit:cover;display:block" alt="' + p.title + '" /></div>' +
       '<div style="flex:1;min-width:0">' +
         '<div style="font-size:10px;font-weight:800;letter-spacing:.1em;color:#ff5c5c;margin-bottom:5px">' + p.tag + ' · ' + p.read + '</div>' +

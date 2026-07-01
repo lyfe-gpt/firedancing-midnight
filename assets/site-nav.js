@@ -25,7 +25,7 @@
     { href: 'bodysuit.html', title: 'Slitweave Bodysuit', sub: 'Ready to ship · from $128', img: 'assets/product/black-bodysuit-2.jpg' },
     { href: 'made-to-order.html', title: 'Build your fit', sub: 'Made to order · 2-4 weeks', img: 'assets/product/duo-lifestyle.jpg' }
   ];
-  var EXPLORE = [['blog.html', 'Journal'], ['index.html#maker', 'The maker'], ['index.html#watch', 'Watch me make it']];
+  var EXPLORE = [['blog.html', 'Journal'], ['maker.html', 'The maker'], ['index.html#watch', 'Watch me make it']];
 
   function eyebrow(t, m) { return '<div style="font-size:11px;font-weight:800;letter-spacing:.12em;color:' + RED + ';text-transform:uppercase;margin:' + m + '">' + t + '</div>'; }
 
@@ -89,7 +89,8 @@
   }
 
   function headerHtml() {
-    return '<header style="position:sticky;top:0;z-index:60;background:rgba(0,0,0,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)">' +
+    return '<a href="#main" class="fd-skip" style="position:absolute;left:-9999px;top:8px;z-index:100;background:' + RED + ';color:#fff;font-weight:800;font-size:13px;padding:10px 16px;border-radius:8px">Skip to content</a>' +
+      '<header style="position:sticky;top:0;z-index:60;background:rgba(0,0,0,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)">' +
       '<div style="max-width:440px;margin:0 auto;height:54px;display:flex;align-items:center;padding:0 14px;gap:6px">' +
         '<button id="navMenuBtn" aria-label="Open menu" style="background:none;border:none;color:#fff;cursor:pointer;padding:6px;display:grid;place-items:center">' + ICON.menu + '</button>' +
         '<button id="navShopBtn" style="background:none;border:none;color:#e6e6e6;cursor:pointer;font-family:Figtree,sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;gap:3px;padding:6px 4px">Shop<span id="navShopChev" style="display:inline-flex;transition:transform .2s">' + ICON.chevron + '</span></button>' +
@@ -107,7 +108,7 @@
         '<p style="margin:0 0 22px;font-size:13px;color:#8f8f8f;line-height:1.55">Hand-cut slitweave stagewear, made by one pair of hands for artists who live after dark.</p>' +
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px 16px">' +
           col('SHOP', [['catsuit.html', 'Slitweave Catsuit'], ['bodysuit.html', 'Slitweave Bodysuit'], ['made-to-order.html', 'Made to Order']]) +
-          col('EXPLORE', [['blog.html', 'Journal'], ['index.html#maker', 'The maker'], ['index.html#watch', 'Watch me make it']]) +
+          col('EXPLORE', [['blog.html', 'Journal'], ['maker.html', 'The maker'], ['index.html#watch', 'Watch me make it']]) +
           col('HELP', [['#', 'Size guide'], ['#', 'Shipping'], ['#', 'Care'], ['#', 'Contact']]) +
         '</div>' +
         '<div style="margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:#6f6f6f;font-weight:500">© 2026 Firedancing · Privacy · Terms</div>' +
@@ -143,6 +144,7 @@
       '@media (max-width:899px){#navShopBtn{display:none !important}#megaPanel{display:none !important}}',
       /* Keyboard focus visibility */
       'a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #ff5c5c;outline-offset:2px;border-radius:4px}',
+      '.fd-skip:focus{left:12px !important}',
       /* Comfortable tap targets in the header */
       '#site-header button,#site-header > header a{min-height:40px}',
       /* Respect reduced motion */
