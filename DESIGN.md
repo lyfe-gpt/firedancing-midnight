@@ -142,3 +142,13 @@ Every piece is hand-cut and one of a kind, so there are no returns anywhere on t
 * Made to Order, Build your fit (`made-to-order.html`). The configurator, and the only experience with add-ons. Base bodysuit $130 or catsuit $150, plus dye (+$40), metal ties (+$25), and chain belt (+$25), then zero-cost fit choices (length, neckline, cleavage depth, side-slit width, size) and optional custom measurements. Live price. Ships in 2 to 4 weeks, final sale.
 
 Add-ons and fit spec belong only to made to order. The ready-to-ship pages never show a configurator or add-ons.
+
+## 11. Discoverability layer (SEO / AEO / agent-first)
+
+The site is built to be read by search engines, AI answer engines, and shopping agents, not just people. This layer must stay in sync with the visible copy.
+
+* Crawl control: a root `robots.txt` (allows all crawlers, names the AI user-agents explicitly, points to the sitemap) and a `sitemap.xml` listing the five indexable pages. `cart.html` is `noindex, follow`.
+* Canonicals: every page declares its canonical URL so the `?v=N` cache-busting variants do not split signals.
+* Social cards: Open Graph + Twitter tags on every public page; product pages use `og:type=product` with `product:price`.
+* Structured data (JSON-LD): Organization + WebSite + FAQPage on the home page; Product + Offer + BreadcrumbList on both product pages and made-to-order (AggregateOffer, lowPrice 130). Availability is `InStock` for ready-to-ship and `PreOrder` for made-to-order. Return policy is `MerchantReturnNotPermitted` everywhere, matching the all-sales-final rule.
+* Sync rule: price, lead time, and the final-sale policy now appear in visible copy, meta tags, and JSON-LD. Change one, change all three. Full findings and backlog live in the vault: SEO audit, AEO audit, Agent-first audit. The known blocker is that checkout is client-side only (no real payment), tracked as Phase 3 of the ecommerce build playbook.
