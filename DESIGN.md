@@ -67,11 +67,12 @@ Product swatch anchors: Onyx Black `#0a0a0a`, Ghost White `#e9e9ec`.
 
 ## 6. Navigation
 
-* Shared header injected on every page from `assets/site-nav.js`.
-* Icons are inline SVG: a hamburger, a magnifying glass search, and a shopping bag with a live count badge.
-* Mobile menu: a left slide-in panel with sectioned links (Ready to Ship, Made to Order, Explore) and a link to the bag.
-* Mega menu: a Shop trigger opens a full width panel with the same categories in columns plus a featured image tile.
-* Search: a top drop-down overlay with an input and popular search chips.
+* Shared header injected on every page from `assets/site-nav.js`. It also owns the cart count badge and a global stylesheet (focus-visible outlines, reduced-motion, tap targets).
+* Icons are inline SVG: a hamburger, a magnifying-glass search, and a shopping bag with a live count badge.
+* The nav is built around the two products plus made to order. Every shop entry is a card with a product photo, title, and price line: Slitweave Catsuit from $148, Slitweave Bodysuit from $128, Build your fit (made to order). No generic category links.
+* Mobile menu: a left slide-in panel. Product cards with photos under a Shop heading, then Explore links (Journal, The maker, Watch me make it) and a link to the bag. This is the primary nav on phones.
+* Mega menu: the same product cards, opened from a Shop trigger in the header. Desktop only, shown at 900px and up. Below 900px the trigger is hidden and the hamburger is the nav. A CSS media query and a JS matchMedia fallback both enforce this, and the nav script is versioned (`?v=N`) to defeat caching when it changes.
+* Search: a top drop-down overlay with an input and popular chips that link to the products.
 
 ## 7. Motion
 
@@ -84,9 +85,18 @@ Product swatch anchors: Onyx Black `#0a0a0a`, Ghost White `#e9e9ec`.
 
 ## 8. Imagery
 
-* Full bleed 4 by 5 hero shots. Dark studio with red and blue neon, fire performance energy, plus one daylight duo frame.
-* Web optimized at max 1000px and about 72 quality, sharp at 440px with a light payload.
-* Always object-fit cover, with scrim gradients so overlaid text stays legible.
+* Full bleed studio shots at a 4 by 5 ratio in product galleries. Dark studio with red and blue neon and fire-performance energy, plus one daylight duo frame that shows the belts and cuffs.
+* Web optimized: JPEG at 1400px wide, about 82 quality. Sharp on high-DPI phones, still light (roughly 230 to 290 KB each). Below-the-fold images use loading lazy and decoding async.
+* Always object-fit cover, with scrim gradients so overlaid text stays legible. Hero card gradients only darken the bottom third so the image itself pops.
+
+Image ownership. Do not share photos between the ready-to-ship catsuit and the custom build; they are different experiences and should read differently.
+
+| Where | Images |
+|---|---|
+| Catsuit product page | `black-catsuit-1..5` (five pose shots) for black, `white-catsuit-1` for white |
+| Bodysuit product page | `black-bodysuit-2` |
+| Made to order (custom build) | range and add-on shots: `duo-lifestyle`, `black-bodysuit-2`. Never the catsuit pose shots |
+| Meet the maker | a dedicated `maker.jpg` pose |
 
 ## 9. Tone of voice
 
@@ -120,3 +130,13 @@ Do and do not:
 | Short, declarative, tracked eyebrows | Long paragraphs and corporate hedging |
 
 Naming: pieces get one word performance names (Groove catsuit, Ember bodysuit). Finishes read as colour names (Onyx Black, Ghost White).
+
+## 10. Product architecture
+
+The catalogue is two products plus a made-to-order builder. Each product has its own URL and title, and the two experiences stay distinct in layout, copy, and imagery.
+
+* Ready to Ship, Slitweave Catsuit (`catsuit.html`, $148). Pick colour (Onyx Black, Ghost White) and size, add to bag. In stock, returnable within 30 days. A fast pick-and-buy with no add-ons. Its gallery is the five dedicated catsuit pose shots.
+* Ready to Ship, Slitweave Bodysuit (`bodysuit.html`, $128). Onyx Black, pick size, add to bag. In stock, returnable. No add-ons.
+* Made to Order, Build your fit (`made-to-order.html`). The configurator, and the only experience with add-ons. Base bodysuit $130 or catsuit $150, plus dye (+$40), metal ties (+$25), and chain belt (+$25), then zero-cost fit choices (length, neckline, cleavage depth, side-slit width, size) and optional custom measurements. Live price. Ships in 2 to 4 weeks, final sale.
+
+Add-ons and fit spec belong only to made to order. The ready-to-ship pages never show a configurator or add-ons.

@@ -23,7 +23,7 @@
   var PRODUCTS = [
     { href: 'catsuit.html', title: 'Slitweave Catsuit', sub: 'Ready to ship · from $148', img: 'assets/product/black-catsuit-1.jpg' },
     { href: 'bodysuit.html', title: 'Slitweave Bodysuit', sub: 'Ready to ship · from $128', img: 'assets/product/black-bodysuit-2.jpg' },
-    { href: 'made-to-order.html', title: 'Build your fit', sub: 'Made to order · 2-4 weeks', img: 'assets/product/white-catsuit-1.jpg' }
+    { href: 'made-to-order.html', title: 'Build your fit', sub: 'Made to order · 2-4 weeks', img: 'assets/product/duo-lifestyle.jpg' }
   ];
   var EXPLORE = [['blog.html', 'Journal'], ['index.html#maker', 'The maker'], ['index.html#watch', 'Watch me make it']];
 

@@ -173,7 +173,7 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
 
 <script src="assets/cart.js"></script>
 <script src="assets/cart-drawer.js"></script>
-<script src="assets/site-nav.js?v=4"></script>
+<script src="assets/site-nav.js?v=5"></script>
 <script>
 (function () {
   var state = {
@@ -183,8 +183,9 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
     showErr: false, hero: 0, toast: false
   };
   var galleries = {
-    black: ['assets/product/black-catsuit-1.jpg', 'assets/product/black-catsuit-4.jpg', 'assets/product/black-bodysuit-2.jpg'],
-    white: ['assets/product/white-catsuit-1.jpg', 'assets/product/duo-lifestyle.jpg']
+    // Distinct from the catsuit PDP: made-to-order shows the range and the add-ons (duo shot has belts + cuffs).
+    black: ['assets/product/duo-lifestyle.jpg', 'assets/product/black-bodysuit-2.jpg'],
+    white: ['assets/product/duo-lifestyle.jpg']
   };
   var colors = [
     { key: 'black', label: 'Black', hex: '#0a0a0a' },
