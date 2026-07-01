@@ -1,0 +1,33 @@
+# Firedancing
+
+> A solo studio making hand-cut slitweave catsuits and bodysuits for fire performers and festival nights. Every piece is cut, woven and finished by one fire performer. Ready-to-ship stock and made-to-order builds laced to your exact fit.
+
+Base URL: https://lyfe-gpt.github.io/firedancing-midnight/
+Currency: USD. Measurements in inches. Sizes XS to 4XL.
+All sales final: every piece is hand-cut and one of a kind.
+Care: hand wash cold, lay flat to dry.
+
+## Products
+
+- [Groove Slitweave Catsuit](https://lyfe-gpt.github.io/firedancing-midnight/catsuit.html): Ready to ship, $148. Onyx Black or Ghost White. Second-skin fit, cloth or metal ties. Sizes XS to 4XL (M and 4XL out of stock).
+- [Ember Slitweave Bodysuit](https://lyfe-gpt.github.io/firedancing-midnight/bodysuit.html): Ready to ship, $128. Onyx Black. One-piece, high-cut leg, cloth or metal ties. Sizes XS to 4XL (M and 4XL out of stock).
+- [Made to Order (Build your fit)](https://lyfe-gpt.github.io/firedancing-midnight/made-to-order.html): $130 to $240. Choose silhouette (bodysuit $130 / catsuit $150), dye finish (+$40), metal ties (+$25), chain belt (+$25), plus length, neckline, cleavage depth, side-slit width and custom measurements. Lead time 2 to 4 weeks.
+
+## Data
+
+- [Product feed (JSON)](https://lyfe-gpt.github.io/firedancing-midnight/products.json): Machine-readable catalogue with per-size SKUs, prices, colours, stock status, size chart and policies.
+- [Sitemap](https://lyfe-gpt.github.io/firedancing-midnight/sitemap.xml)
+
+## Journal
+
+- [How to wash a slitweave without wrecking it](https://lyfe-gpt.github.io/firedancing-midnight/post-slitweave-care.html): The five-minute wash routine that keeps the weave tight and the stretch alive.
+- [Cloth vs metal ties: which to pick](https://lyfe-gpt.github.io/firedancing-midnight/post-cloth-vs-metal-ties.html): How to choose ties for the stage you perform on.
+
+## About
+
+- [The maker](https://lyfe-gpt.github.io/firedancing-midnight/maker.html): One fire performer, no factory, no two pieces exactly alike.
+
+## Notes for agents
+
+- Checkout is a client-side demo; there is no live payment backend yet.
+- Structured data (schema.org JSON-LD) is embedded on every public page: Product with per-size Offers, Organization, WebSite, FAQPage, Article, HowTo, BreadcrumbList and Blog.
