@@ -29,6 +29,16 @@
 
   function eyebrow(t, m) { return '<div style="font-size:11px;font-weight:800;letter-spacing:.12em;color:' + RED + ';text-transform:uppercase;margin:' + m + '">' + t + '</div>'; }
 
+  // Route a search query to the best-matching page (small catalogue, so keyword match).
+  function routeSearch(q) {
+    q = (q || '').toLowerCase();
+    if (/custom|made|build|fit|measure|order|dye|tie|chain/.test(q)) return 'made-to-order.html';
+    if (/bodysuit|ember|one.?piece|leg/.test(q)) return 'bodysuit.html';
+    if (/catsuit|groove|full|white|black|onyx|ghost/.test(q)) return 'catsuit.html';
+    if (/journal|blog|care|wash|maker|stream|story/.test(q)) return 'blog.html';
+    return 'catsuit.html';
+  }
+
   function megaPanelHtml() {
     var cards = PRODUCTS.map(function (p) {
       return '<a href="' + p.href + '" data-nav-link style="display:flex;gap:12px;align-items:center;padding:8px;border-radius:12px;background:#151515;border:1px solid rgba(255,255,255,.08)">' +
@@ -111,7 +121,7 @@
           col('EXPLORE', [['blog.html', 'Journal'], ['maker.html', 'The maker'], ['index.html#watch', 'Watch me make it']]) +
           col('HELP', [['#', 'Size guide'], ['#', 'Shipping'], ['#', 'Care'], ['#', 'Contact']]) +
         '</div>' +
-        '<div style="margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:#6f6f6f;font-weight:500">© 2026 Firedancing · Privacy · Terms</div>' +
+        '<div style="margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:#9a9a9a;font-weight:500">© 2026 Firedancing · Privacy · Terms</div>' +
       '</div></footer>';
   }
   function col(head, links) {
@@ -163,7 +173,7 @@
     var shopBtn = document.getElementById('navShopBtn');
     var searchBtn = document.getElementById('navSearchBtn');
     if (menuBtn) menuBtn.addEventListener('click', function () { closeAll(); document.getElementById('mobileMenu').style.display = 'block'; });
-    if (searchBtn) searchBtn.addEventListener('click', function () { closeAll(); document.getElementById('searchOverlay').style.display = 'block'; var i = document.getElementById('searchInput'); if (i) { setTimeout(function () { i.focus(); }, 60); i.onkeydown = function (e) { if (e.key === 'Enter') location.href = 'catsuit.html'; }; } });
+    if (searchBtn) searchBtn.addEventListener('click', function () { closeAll(); document.getElementById('searchOverlay').style.display = 'block'; var i = document.getElementById('searchInput'); if (i) { setTimeout(function () { i.focus(); }, 60); i.onkeydown = function (e) { if (e.key === 'Enter') location.href = routeSearch(i.value); }; } });
     if (shopBtn) shopBtn.addEventListener('click', function () {
       var mp = document.getElementById('megaPanel'), chev = document.getElementById('navShopChev');
       var open = mp.style.display === 'block';

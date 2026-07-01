@@ -80,7 +80,7 @@ a{color:inherit;text-decoration:none}
 
   <!-- GALLERY CAROUSEL -->
   <div style="position:relative;background:#000">
-    <div id="gallery" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch"></div>
+    <div id="gallery" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;aspect-ratio:4/5;background:#000"></div>
     <button id="wishTop" style="position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:none;background:rgba(0,0,0,.5);color:#fff;font-size:18px;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">♡</button>
     <div style="position:absolute;left:14px;bottom:16px;display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:6px 11px 6px 7px;border-radius:500px">
       <span style="width:22px;height:22px;border-radius:50%;background:#ff3b3b;color:#000;display:grid;place-items:center;font-size:9px;padding-left:2px">▶</span>
@@ -191,7 +191,7 @@ a{color:inherit;text-decoration:none}
     <button id="addBtn" style="flex:1;height:48px;border:none;border-radius:500px;background:#ff3b3b;color:#fff;font-family:Figtree,sans-serif;font-size:15px;font-weight:800;letter-spacing:.02em;cursor:pointer;transition:.15s">Add to Bag</button>
   </div>
 
-  <div id="toastRoot"></div>
+  <div id="toastRoot" role="status" aria-live="polite" aria-atomic="true"></div>
   <div id="sizeChartRoot"></div>
 </div>
 
@@ -200,10 +200,13 @@ a{color:inherit;text-decoration:none}
 
 <script src="assets/cart.js"></script>
 <script src="assets/cart-drawer.js"></script>
-<script src="assets/site-nav.js?v=7"></script>
+<script src="assets/site-nav.js?v=8"></script>
 <script>
 (function () {
-  var state = { color: 'black', size: null, hero: 0, wish: false, acc: 'desc', sizeErr: false, toast: false, sizeChart: false };
+  var WISH_KEY = 'fd_wish_bodysuit';
+  function wishGet() { try { return localStorage.getItem(WISH_KEY) === '1'; } catch (e) { return false; } }
+  function wishSet(v) { try { localStorage.setItem(WISH_KEY, v ? '1' : '0'); } catch (e) {} }
+  var state = { color: 'black', size: null, hero: 0, wish: wishGet(), acc: 'desc', sizeErr: false, toast: false, sizeChart: false };
   var galleries = {
     black: ['assets/product/black-bodysuit-2.jpg']
   };
@@ -364,8 +367,8 @@ a{color:inherit;text-decoration:none}
   });
   document.getElementById('sizeGuideBtn').addEventListener('click', function () { state.sizeChart = true; renderSizeChart(); });
   document.getElementById('sizeChartRoot').addEventListener('click', function (e) { if (e.target.closest('[data-act="closechart"]')) { state.sizeChart = false; renderSizeChart(); } });
-  document.getElementById('wishTop').addEventListener('click', function () { state.wish = !state.wish; renderWish(); });
-  document.getElementById('wishBtm').addEventListener('click', function () { state.wish = !state.wish; renderWish(); });
+  document.getElementById('wishTop').addEventListener('click', function () { state.wish = !state.wish; wishSet(state.wish); renderWish(); });
+  document.getElementById('wishBtm').addEventListener('click', function () { state.wish = !state.wish; wishSet(state.wish); renderWish(); });
   document.getElementById('addBtn').addEventListener('click', addToBag);
   document.getElementById('toastRoot').addEventListener('click', function (e) { if (e.target.closest('[data-act="closetoast"]')) { state.toast = false; renderToast(); } });
   gallery.addEventListener('scroll', function () {

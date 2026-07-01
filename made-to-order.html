@@ -81,7 +81,7 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
 
   <!-- GALLERY -->
   <div style="position:relative;background:#000">
-    <div id="gallery" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch"></div>
+    <div id="gallery" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;aspect-ratio:4/5;background:#000"></div>
     <div style="position:absolute;left:14px;top:14px;display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 12px;border-radius:500px">
       <span style="width:7px;height:7px;border-radius:50%;background:#ff3b3b"></span>
       <span style="font-size:11px;font-weight:700;letter-spacing:.04em;color:#e6e6e6">MADE TO ORDER</span>
@@ -220,7 +220,7 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
     <button id="addBtn" style="flex:1;height:50px;border:none;border-radius:500px;background:#ff3b3b;color:#fff;font-family:Figtree,sans-serif;font-size:15px;font-weight:800;letter-spacing:.02em;cursor:pointer;transition:.15s">Add to Cart</button>
   </div>
 
-  <div id="toastRoot"></div>
+  <div id="toastRoot" role="status" aria-live="polite" aria-atomic="true"></div>
   <div id="sizeChartRoot"></div>
 </div>
 
@@ -229,7 +229,7 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
 
 <script src="assets/cart.js"></script>
 <script src="assets/cart-drawer.js"></script>
-<script src="assets/site-nav.js?v=7"></script>
+<script src="assets/site-nav.js?v=8"></script>
 <script>
 (function () {
   var state = {
