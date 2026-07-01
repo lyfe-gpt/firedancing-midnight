@@ -140,7 +140,7 @@
       '@keyframes navDrop{from{transform:translateY(-100%);opacity:.4}to{transform:translateY(0);opacity:1}}',
       '#site-header a{text-decoration:none}',
       /* Mega menu is desktop only. On mobile the hamburger is the nav. */
-      '@media (max-width:699px){#navShopBtn{display:none !important}#megaPanel{display:none !important}}',
+      '@media (max-width:899px){#navShopBtn{display:none !important}#megaPanel{display:none !important}}',
       /* Keyboard focus visibility */
       'a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #ff5c5c;outline-offset:2px;border-radius:4px}',
       /* Comfortable tap targets in the header */
@@ -183,7 +183,7 @@
     // independent of the injected stylesheet (covers any CSS caching/specificity edge).
     function applyBreakpoint() {
       var shop = document.getElementById('navShopBtn'); if (!shop) return;
-      if (window.matchMedia('(max-width:699px)').matches) {
+      if (window.matchMedia('(max-width:899px)').matches) {
         shop.style.setProperty('display', 'none', 'important');
         var mp = document.getElementById('megaPanel'); if (mp) mp.style.display = 'none';
       } else {
@@ -192,6 +192,7 @@
     }
     applyBreakpoint();
     window.addEventListener('resize', applyBreakpoint);
+    window.addEventListener('orientationchange', applyBreakpoint);
 
     window.addEventListener('midnight:cartchange', syncBadge);
     window.addEventListener('storage', syncBadge);
