@@ -51,6 +51,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/desktop.css?v=1">
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#0d0d0d;color:#fff;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -62,7 +63,7 @@ a{color:inherit;text-decoration:none}
 <body>
 <div id="site-header"></div>
 
-<div id="main" style="max-width:440px;margin:0 auto;background:#0d0d0d;overflow-x:hidden">
+<div id="main" class="fd-read" style="max-width:440px;margin:0 auto;background:#0d0d0d;overflow-x:hidden">
 
   <!-- HEADER -->
   <div style="padding:34px 20px 8px">
@@ -111,23 +112,24 @@ a{color:inherit;text-decoration:none}
 
 <script src="assets/cart.js"></script>
 <script src="assets/cart-drawer.js"></script>
-<script src="assets/site-nav.js?v=8"></script>
+<script src="assets/site-nav.js?v=10"></script>
 <script>
 (function () {
   var posts = [
     { tag: 'BEHIND THE SEAMS', read: '3 min', img: 'assets/product/black-catsuit-1.jpg', title: 'Cloth vs metal ties: which to pick', excerpt: 'One is soft and quiet, one is hardware and shine. Here is how to choose for the stage.', href: 'post-cloth-vs-metal-ties.html' },
     { tag: 'CARE', read: '4 min', img: 'assets/product/white-catsuit-1.jpg', title: 'How to wash a slitweave without wrecking it', excerpt: 'The five-minute routine that keeps the weave tight and the stretch alive.', href: 'post-slitweave-care.html' },
     { tag: 'THE MAKER', read: '3 min', img: 'assets/product/maker.jpg', title: 'Made by one pair of hands', excerpt: 'Why every piece is still cut, woven and finished by one fire performer.', href: 'maker.html' },
-    { tag: 'FESTIVAL', read: '5 min', img: 'assets/product/duo-lifestyle.jpg', title: 'Building a duo look that reads from the back row', excerpt: 'Black and white, matched cuts, and why contrast wins under stage light.', href: '' }
+    { tag: 'FESTIVAL', read: 'Soon', img: 'assets/product/duo-lifestyle.jpg', title: 'Building a duo look that reads from the back row', excerpt: 'Black and white, matched cuts, and why contrast wins under stage light.', href: '' }
   ];
   document.getElementById('posts').innerHTML = posts.map(function (p) {
-    return '<a href="' + (p.href || '#') + '"' + (p.href ? '' : ' aria-disabled="true"') + ' style="display:flex;gap:14px;align-items:center' + (p.href ? '' : ';opacity:.55') + '">' +
+    var tag = p.href ? 'a' : 'span';
+    return '<' + tag + (p.href ? ' href="' + p.href + '"' : '') + ' style="display:flex;gap:14px;align-items:center' + (p.href ? '' : ';opacity:.55') + '">' +
       '<div style="flex:0 0 108px;border-radius:12px;overflow:hidden;background:#000"><img src="' + p.img + '" loading="lazy" decoding="async" style="width:108px;height:88px;object-fit:cover;display:block" alt="' + p.title + '" /></div>' +
       '<div style="flex:1;min-width:0">' +
         '<div style="font-size:10px;font-weight:800;letter-spacing:.1em;color:#ff5c5c;margin-bottom:5px">' + p.tag + ' · ' + p.read + '</div>' +
         '<div style="font-size:15px;font-weight:800;line-height:1.2;margin-bottom:4px">' + p.title + '</div>' +
         '<div style="font-size:12.5px;color:#a7a7a7;line-height:1.45">' + p.excerpt + '</div>' +
-      '</div></a>';
+      '</div></' + tag + '>';
   }).join('');
 })();
 </script>

@@ -59,6 +59,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/desktop.css?v=1">
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#000;color:#fff;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -77,21 +78,17 @@ a{color:inherit;text-decoration:none}
 </div>
 <div id="site-header"></div>
 
-<div id="main" style="max-width:440px;margin:0 auto;position:relative;background:#121212;padding-bottom:88px;overflow-x:hidden">
+<div id="main" class="fd-pdp" style="max-width:440px;margin:0 auto;position:relative;background:#121212;padding-bottom:88px;overflow-x:hidden">
 
   <!-- GALLERY CAROUSEL -->
-  <div style="position:relative;background:#000">
+  <div class="fd-pdp-media" style="position:relative;background:#000">
     <div id="gallery" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;aspect-ratio:4/5;background:#000"></div>
     <button id="wishTop" style="position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:none;background:rgba(0,0,0,.5);color:#fff;font-size:18px;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">♡</button>
-    <div style="position:absolute;left:14px;bottom:16px;display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:6px 11px 6px 7px;border-radius:500px">
-      <span style="width:22px;height:22px;border-radius:50%;background:#ff3b3b;color:#000;display:grid;place-items:center;font-size:9px;padding-left:2px">▶</span>
-      <span style="font-size:11px;font-weight:600;color:#e6e6e6">Reel · 0:32</span>
-    </div>
     <div id="dots" style="position:absolute;right:14px;bottom:16px;display:flex;gap:6px"></div>
   </div>
 
   <!-- BUY BOX -->
-  <div style="padding:22px 20px 8px">
+  <div class="fd-pdp-buy" style="padding:22px 20px 8px">
     <div style="display:inline-flex;align-items:center;gap:9px;background:#181818;border:1px solid rgba(255,59,59,.35);border-radius:500px;padding:6px 13px 6px 11px;margin-bottom:14px">
       <span style="display:flex;align-items:flex-end;gap:2px;height:13px">
         <span style="width:3px;height:13px;background:#ff3b3b;border-radius:2px;transform-origin:bottom;animation:eqbar .9s ease-in-out infinite"></span>
@@ -125,11 +122,15 @@ a{color:inherit;text-decoration:none}
     <div style="margin-bottom:8px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:11px">
         <span style="font-size:13px;font-weight:700;letter-spacing:.02em">Select Size</span>
-        <button id="sizeGuideBtn" style="background:none;border:none;font-size:12px;font-weight:600;color:#a7a7a7;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:Figtree,sans-serif">Size chart</button>
+        <button id="sizeGuideBtn" style="background:none;border:none;font-size:12px;font-weight:600;color:#a7a7a7;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:Figtree,sans-serif;min-height:44px;padding:0 4px;margin-right:-4px">Size chart</button>
       </div>
       <div id="sizes" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px"></div>
     </div>
     <div id="sizeErr"></div>
+
+    <div class="fd-buy-desktop" style="display:none;margin-top:20px">
+      <button type="button" onclick="document.getElementById('addBtn').click()" style="width:100%;height:52px;border:none;border-radius:500px;background:#ff3b3b;color:#fff;font-family:Figtree,sans-serif;font-size:15px;font-weight:800;letter-spacing:.02em;cursor:pointer">Add to Bag</button>
+    </div>
 
     <div style="display:flex;flex-direction:column;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1)">
       <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#d6d6d6;font-weight:500"><span style="color:#ff3b3b;font-weight:800">✓</span>Free shipping on orders over $75</div>
@@ -158,7 +159,7 @@ a{color:inherit;text-decoration:none}
   </div>
 
   <!-- WHY WE MADE THIS -->
-  <section style="margin:24px 16px 0;background:#181818;border-radius:16px;padding:28px 22px">
+  <section class="fd-pdp-full" style="margin:24px 16px 0;background:#181818;border-radius:16px;padding:28px 22px">
     <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:#ff3b3b;margin-bottom:12px">WHY WE MADE THIS</div>
     <h2 style="font-size:22px;font-weight:800;line-height:1.15;letter-spacing:-.01em;margin:0 0 12px">A slitweave that survives the encore.</h2>
     <p style="margin:0 0 20px;font-size:14px;line-height:1.6;color:#b3b3b3">The Groove started as stagewear the founder wanted for her own sets. It needed coverage and drama in one piece, cutouts that breathe under lights, and a weave that does not shift through a full performance. Every one is still cut by hand in the studio.</p>
@@ -168,22 +169,22 @@ a{color:inherit;text-decoration:none}
   </section>
 
   <!-- FINISH THE LOOK (upsells) -->
-  <section style="margin:32px 0 0">
+  <section class="fd-pdp-full" style="margin:32px 0 0">
     <div style="margin:0 0 14px;padding:0 20px"><h2 style="font-size:21px;font-weight:800;letter-spacing:-.01em;margin:0">Finish the look</h2><p style="margin:6px 0 0;font-size:13px;color:#a7a7a7;font-weight:500">Hand-made add-ons that ship with your order.</p></div>
     <div id="addons" style="display:flex;flex-direction:column;gap:10px;padding:0 20px"></div>
   </section>
 
   <!-- COMPLETE THE SET -->
-  <section style="margin:32px 0 0">
+  <section class="fd-pdp-full" style="margin:32px 0 0">
     <div style="display:flex;align-items:baseline;justify-content:space-between;margin:0 0 16px;padding:0 20px">
       <h2 style="font-size:21px;font-weight:800;letter-spacing:-.01em;margin:0">Complete the set</h2>
-      <a href="#" style="font-size:12px;font-weight:700;color:#ff3b3b">See all →</a>
+      <a href="index.html" style="font-size:12px;font-weight:700;color:#ff3b3b">See all →</a>
     </div>
     <div id="recs" style="display:flex;gap:14px;overflow-x:auto;padding:0 20px 4px;scroll-snap-type:x mandatory"></div>
   </section>
 
   <!-- STICKY ADD TO BAG BAR -->
-  <div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(440px,100%);z-index:80;background:rgba(10,10,10,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.12);padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px">
+  <div class="fd-sticky" style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(440px,100%);z-index:80;background:rgba(10,10,10,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.12);padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px">
     <div style="min-width:64px">
       <div style="font-size:17px;font-weight:800;line-height:1.1">$148</div>
       <div id="colorLabelSticky" style="font-size:11px;color:#8f8f8f;font-weight:600"></div>
@@ -201,13 +202,13 @@ a{color:inherit;text-decoration:none}
 
 <script src="assets/cart.js"></script>
 <script src="assets/cart-drawer.js"></script>
-<script src="assets/site-nav.js?v=8"></script>
+<script src="assets/site-nav.js?v=10"></script>
 <script>
 (function () {
   var WISH_KEY = 'fd_wish_catsuit';
   function wishGet() { try { return localStorage.getItem(WISH_KEY) === '1'; } catch (e) { return false; } }
   function wishSet(v) { try { localStorage.setItem(WISH_KEY, v ? '1' : '0'); } catch (e) {} }
-  var state = { color: 'black', size: null, hero: 0, wish: wishGet(), acc: 'desc', sizeErr: false, toast: false, sizeChart: false };
+  var state = { color: 'black', size: null, hero: 0, wish: wishGet(), acc: 'desc', sizeErr: false, oosMsg: null, toast: false, sizeChart: false };
   var galleries = {
     black: ['assets/product/black-catsuit-1.jpg', 'assets/product/black-catsuit-2.jpg', 'assets/product/black-catsuit-3.jpg', 'assets/product/black-catsuit-4.jpg', 'assets/product/black-catsuit-5.jpg'],
     white: ['assets/product/white-catsuit-1.jpg', 'assets/product/white-catsuit-2.jpg', 'assets/product/white-catsuit-3.jpg', 'assets/product/white-catsuit-4.jpg']
@@ -270,16 +271,19 @@ a{color:inherit;text-decoration:none}
     document.getElementById('sizes').innerHTML = sizes.map(function (s) {
       var sel = state.size === s.label, oos = s.stock === 0;
       var style = 'height:44px;border-radius:6px;font-family:Figtree,sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;cursor:' + (oos ? 'not-allowed' : 'pointer') + ';background:' + (sel ? '#ff3b3b' : 'transparent') + ';color:' + (oos ? '#5a5a5a' : '#fff') + ';border:1px solid ' + (sel ? '#ff3b3b' : (oos ? 'rgba(255,255,255,.08)' : 'rgba(255,255,255,.28)')) + ';text-decoration:' + (oos ? 'line-through' : 'none') + ';transition:.12s';
-      return '<button data-size="' + s.label + '"' + (oos ? ' data-oos="1"' : '') + ' style="' + style + '">' + s.label + '</button>';
+      return '<button data-size="' + s.label + '"' + (oos ? ' data-oos="1" aria-disabled="true" title="Sold out"' : '') + ' aria-label="' + s.label + (oos ? ', sold out' : '') + '" style="' + style + '">' + s.label + '</button>';
     }).join('');
-    document.getElementById('sizeErr').innerHTML = state.sizeErr ? '<p style="margin:10px 0 0;font-size:12px;font-weight:600;color:#ff6b6b">Please select a size to continue.</p>' : '';
+    var msg = state.sizeErr ? 'Please select a size to continue.'
+      : state.oosMsg ? 'Size ' + state.oosMsg + ' is sold out. <a href="made-to-order.html" style="color:#ff6b6b;font-weight:700;text-decoration:underline;text-underline-offset:3px">Build it made to order.</a>'
+      : '';
+    document.getElementById('sizeErr').innerHTML = msg ? '<p style="margin:10px 0 0;font-size:12px;font-weight:600;color:#ff6b6b">' + msg + '</p>' : '';
   }
   function renderAddons() {
     document.getElementById('addons').innerHTML = addons.map(function (a) {
       return '<div style="display:flex;align-items:center;gap:12px;background:#181818;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:13px 15px">' +
         '<div style="flex:1"><div style="font-size:14px;font-weight:700">' + esc(a.title) + '</div><div style="font-size:12px;color:#a7a7a7;font-weight:500">' + esc(a.sub) + '</div></div>' +
         '<div style="font-size:14px;font-weight:800">$' + a.price + '</div>' +
-        '<button data-addon="' + a.id + '" style="flex:0 0 auto;height:36px;padding:0 16px;border:none;border-radius:500px;background:#ff3b3b;color:#fff;font-family:Figtree,sans-serif;font-size:13px;font-weight:800;cursor:pointer">Add</button>' +
+        '<button data-addon="' + a.id + '" aria-label="Add ' + esc(a.title) + '" style="flex:0 0 auto;height:44px;padding:0 18px;border:none;border-radius:500px;background:#ff3b3b;color:#fff;font-family:Figtree,sans-serif;font-size:13px;font-weight:800;cursor:pointer">Add</button>' +
       '</div>';
     }).join('');
   }
@@ -358,8 +362,9 @@ a{color:inherit;text-decoration:none}
     renderGallery(); renderSwatches(); renderMeta();
   });
   document.getElementById('sizes').addEventListener('click', function (e) {
-    var t = e.target.closest('[data-size]'); if (!t || t.getAttribute('data-oos')) return;
-    state.size = t.getAttribute('data-size'); state.sizeErr = false; renderSizes();
+    var t = e.target.closest('[data-size]'); if (!t) return;
+    if (t.getAttribute('data-oos')) { state.oosMsg = t.getAttribute('data-size'); state.sizeErr = false; renderSizes(); return; }
+    state.size = t.getAttribute('data-size'); state.sizeErr = false; state.oosMsg = null; renderSizes();
   });
   document.getElementById('addons').addEventListener('click', function (e) {
     var t = e.target.closest('[data-addon]'); if (t) addAddon(t.getAttribute('data-addon'));

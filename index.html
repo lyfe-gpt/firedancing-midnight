@@ -68,6 +68,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/desktop.css?v=1">
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#0d0d0d;color:#fff;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -79,10 +80,10 @@ a{color:inherit;text-decoration:none}
 <body>
 <div id="site-header"></div>
 
-<div id="main" style="max-width:440px;margin:0 auto;position:relative;background:#0d0d0d;overflow-x:hidden">
+<div id="main" class="fd-home" style="max-width:440px;margin:0 auto;position:relative;background:#0d0d0d;overflow-x:hidden">
 
   <!-- HERO -->
-  <div style="padding:40px 24px 26px">
+  <div class="fd-home-hero" style="padding:40px 24px 26px">
     <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
       <span style="width:7px;height:7px;border-radius:50%;background:#ff3b3b"></span>
       <span style="font-size:11px;font-weight:800;letter-spacing:.14em;color:#ff3b3b">HAND-CUT SLITWEAVE FOR AFTER DARK</span>
@@ -92,7 +93,7 @@ a{color:inherit;text-decoration:none}
   </div>
 
   <!-- OPTION CARDS -->
-  <div style="padding:0 16px 8px;display:flex;flex-direction:column;gap:18px">
+  <div class="fd-home-cards" style="padding:0 16px 8px;display:flex;flex-direction:column;gap:18px">
 
     <a href="catsuit.html" style="position:relative;display:block;height:440px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.1)">
       <img src="assets/product/black-catsuit-1.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" alt="Ready to ship slitweave catsuit" />
@@ -128,7 +129,7 @@ a{color:inherit;text-decoration:none}
   <p style="margin:4px 20px 0;font-size:11px;color:#9a9a9a">Every piece is made by hand. All sales are final.</p>
 
   <!-- MEET THE MAKER -->
-  <section id="maker" style="margin:36px 16px 0;background:#161616;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
+  <section id="maker" class="fd-home-maker" style="margin:36px 16px 0;background:#161616;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
     <img src="assets/product/maker.jpg" loading="lazy" decoding="async" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 18%;display:block" alt="The maker" />
     <div style="padding:24px 22px 26px">
       <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:#ff3b3b;margin-bottom:12px">THE MAKER</div>
@@ -142,12 +143,12 @@ a{color:inherit;text-decoration:none}
   <section id="watch" style="margin:32px 20px 0">
     <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:#ff3b3b;margin-bottom:12px">WATCH ME MAKE IT</div>
     <h2 style="font-size:22px;font-weight:900;letter-spacing:-.01em;margin:0 0 10px">The cut, live.</h2>
-    <p style="margin:0 0 18px;font-size:14px;line-height:1.6;color:#b3b3b3">The best part of a slitweave is watching it come apart and come back together. Follow along on the make-along streams, commission a piece as it is being cut, and catch the limited one-of-one drops.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <a href="#" style="display:flex;align-items:center;gap:10px;background:#181818;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 15px;font-size:14px;font-weight:700">TikTok<span style="margin-left:auto;color:#8f8f8f;font-size:12px;font-weight:600">Live</span></a>
-      <a href="#" style="display:flex;align-items:center;gap:10px;background:#181818;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 15px;font-size:14px;font-weight:700">Twitch<span style="margin-left:auto;color:#8f8f8f;font-size:12px;font-weight:600">Streams</span></a>
-      <a href="#" style="display:flex;align-items:center;gap:10px;background:#181818;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 15px;font-size:14px;font-weight:700">Instagram<span style="margin-left:auto;color:#8f8f8f;font-size:12px;font-weight:600">Daily</span></a>
-      <a href="#" style="display:flex;align-items:center;gap:10px;background:#181818;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 15px;font-size:14px;font-weight:700">YouTube<span style="margin-left:auto;color:#8f8f8f;font-size:12px;font-weight:600">VODs</span></a>
+    <p style="margin:0 0 18px;font-size:14px;line-height:1.6;color:#b3b3b3">The best part of a slitweave is watching it come apart and come back together. Make-along streams are coming soon, where you can watch a piece being cut, commission one mid-build, and catch the limited one-of-one drops. <a href="contact.html" style="color:#ff3b3b;font-weight:700;text-decoration:underline;text-underline-offset:3px">Get notified when they go live.</a></p>
+    <div class="fd-home-watch" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <span style="display:flex;align-items:center;gap:10px;background:#181818;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 15px;font-size:14px;font-weight:700;opacity:.7">TikTok<span style="margin-left:auto;color:#8f8f8f;font-size:12px;font-weight:600">Soon</span></span>
+      <span style="display:flex;align-items:center;gap:10px;background:#181818;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 15px;font-size:14px;font-weight:700;opacity:.7">Twitch<span style="margin-left:auto;color:#8f8f8f;font-size:12px;font-weight:600">Soon</span></span>
+      <span style="display:flex;align-items:center;gap:10px;background:#181818;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 15px;font-size:14px;font-weight:700;opacity:.7">Instagram<span style="margin-left:auto;color:#8f8f8f;font-size:12px;font-weight:600">Soon</span></span>
+      <span style="display:flex;align-items:center;gap:10px;background:#181818;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 15px;font-size:14px;font-weight:700;opacity:.7">YouTube<span style="margin-left:auto;color:#8f8f8f;font-size:12px;font-weight:600">Soon</span></span>
     </div>
   </section>
 
@@ -157,7 +158,7 @@ a{color:inherit;text-decoration:none}
       <h2 style="font-size:21px;font-weight:800;letter-spacing:-.01em;margin:0">From the studio</h2>
       <a href="blog.html" style="font-size:12px;font-weight:700;color:#ff3b3b">Read the journal →</a>
     </div>
-    <div style="display:flex;gap:14px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory">
+    <div class="fd-home-journal" style="display:flex;gap:14px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory">
       <a href="post-slitweave-care.html" style="flex:0 0 220px;scroll-snap-align:start">
         <div style="border-radius:12px;overflow:hidden;background:#000;margin-bottom:10px"><img src="assets/product/white-catsuit-1.jpg" loading="lazy" decoding="async" style="width:100%;aspect-ratio:16/10;object-fit:cover;display:block" alt="Ghost White slitweave catsuit, slitweave care guide" /></div>
         <div style="font-size:11px;font-weight:800;letter-spacing:.1em;color:#ff3b3b;margin-bottom:4px">CARE</div>
@@ -178,6 +179,6 @@ a{color:inherit;text-decoration:none}
 
 <script src="assets/cart.js"></script>
 <script src="assets/cart-drawer.js"></script>
-<script src="assets/site-nav.js?v=8"></script>
+<script src="assets/site-nav.js?v=10"></script>
 </body>
 </html>
