@@ -59,6 +59,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/desktop.css?v=1">
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#000;color:#fff;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -77,17 +78,17 @@ a{color:inherit;text-decoration:none}
 </div>
 <div id="site-header"></div>
 
-<div id="main" style="max-width:440px;margin:0 auto;position:relative;background:#121212;padding-bottom:88px;overflow-x:hidden">
+<div id="main" class="fd-pdp" style="max-width:440px;margin:0 auto;position:relative;background:#121212;padding-bottom:88px;overflow-x:hidden">
 
   <!-- GALLERY CAROUSEL -->
-  <div style="position:relative;background:#000">
+  <div class="fd-pdp-media" style="position:relative;background:#000">
     <div id="gallery" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;aspect-ratio:4/5;background:#000"></div>
     <button id="wishTop" style="position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:none;background:rgba(0,0,0,.5);color:#fff;font-size:18px;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">♡</button>
     <div id="dots" style="position:absolute;right:14px;bottom:16px;display:flex;gap:6px"></div>
   </div>
 
   <!-- BUY BOX -->
-  <div style="padding:22px 20px 8px">
+  <div class="fd-pdp-buy" style="padding:22px 20px 8px">
     <div style="display:inline-flex;align-items:center;gap:9px;background:#181818;border:1px solid rgba(255,59,59,.35);border-radius:500px;padding:6px 13px 6px 11px;margin-bottom:14px">
       <span style="display:flex;align-items:flex-end;gap:2px;height:13px">
         <span style="width:3px;height:13px;background:#ff3b3b;border-radius:2px;transform-origin:bottom;animation:eqbar .9s ease-in-out infinite"></span>
@@ -127,6 +128,10 @@ a{color:inherit;text-decoration:none}
     </div>
     <div id="sizeErr"></div>
 
+    <div class="fd-buy-desktop" style="display:none;margin-top:20px">
+      <button type="button" onclick="document.getElementById('addBtn').click()" style="width:100%;height:52px;border:none;border-radius:500px;background:#ff3b3b;color:#fff;font-family:Figtree,sans-serif;font-size:15px;font-weight:800;letter-spacing:.02em;cursor:pointer">Add to Bag</button>
+    </div>
+
     <div style="display:flex;flex-direction:column;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1)">
       <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#d6d6d6;font-weight:500"><span style="color:#ff3b3b;font-weight:800">✓</span>Free shipping on orders over $75</div>
       <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#d6d6d6;font-weight:500"><span style="color:#ff3b3b;font-weight:800">✓</span>Hand-cut, one of a kind, all sales final</div>
@@ -154,7 +159,7 @@ a{color:inherit;text-decoration:none}
   </div>
 
   <!-- WHY WE MADE THIS -->
-  <section style="margin:24px 16px 0;background:#181818;border-radius:16px;padding:28px 22px">
+  <section class="fd-pdp-full" style="margin:24px 16px 0;background:#181818;border-radius:16px;padding:28px 22px">
     <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:#ff3b3b;margin-bottom:12px">WHY WE MADE THIS</div>
     <h2 style="font-size:22px;font-weight:800;line-height:1.15;letter-spacing:-.01em;margin:0 0 12px">A slitweave that survives the encore.</h2>
     <p style="margin:0 0 20px;font-size:14px;line-height:1.6;color:#b3b3b3">The Groove started as stagewear the founder wanted for her own sets. It needed coverage and drama in one piece, cutouts that breathe under lights, and a weave that does not shift through a full performance. Every one is still cut by hand in the studio.</p>
@@ -164,13 +169,13 @@ a{color:inherit;text-decoration:none}
   </section>
 
   <!-- FINISH THE LOOK (upsells) -->
-  <section style="margin:32px 0 0">
+  <section class="fd-pdp-full" style="margin:32px 0 0">
     <div style="margin:0 0 14px;padding:0 20px"><h2 style="font-size:21px;font-weight:800;letter-spacing:-.01em;margin:0">Finish the look</h2><p style="margin:6px 0 0;font-size:13px;color:#a7a7a7;font-weight:500">Hand-made add-ons that ship with your order.</p></div>
     <div id="addons" style="display:flex;flex-direction:column;gap:10px;padding:0 20px"></div>
   </section>
 
   <!-- COMPLETE THE SET -->
-  <section style="margin:32px 0 0">
+  <section class="fd-pdp-full" style="margin:32px 0 0">
     <div style="display:flex;align-items:baseline;justify-content:space-between;margin:0 0 16px;padding:0 20px">
       <h2 style="font-size:21px;font-weight:800;letter-spacing:-.01em;margin:0">Complete the set</h2>
       <a href="index.html" style="font-size:12px;font-weight:700;color:#ff3b3b">See all →</a>
@@ -179,7 +184,7 @@ a{color:inherit;text-decoration:none}
   </section>
 
   <!-- STICKY ADD TO BAG BAR -->
-  <div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(440px,100%);z-index:80;background:rgba(10,10,10,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.12);padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px">
+  <div class="fd-sticky" style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(440px,100%);z-index:80;background:rgba(10,10,10,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.12);padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px">
     <div style="min-width:64px">
       <div style="font-size:17px;font-weight:800;line-height:1.1">$148</div>
       <div id="colorLabelSticky" style="font-size:11px;color:#8f8f8f;font-weight:600"></div>
@@ -197,7 +202,7 @@ a{color:inherit;text-decoration:none}
 
 <script src="assets/cart.js"></script>
 <script src="assets/cart-drawer.js"></script>
-<script src="assets/site-nav.js?v=9"></script>
+<script src="assets/site-nav.js?v=10"></script>
 <script>
 (function () {
   var WISH_KEY = 'fd_wish_catsuit';

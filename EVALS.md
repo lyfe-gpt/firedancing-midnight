@@ -6,6 +6,8 @@ Latest SEO / AEO / agent-first audit (2026-07-01) added: Blog + BlogPosting JSON
 
 Mobile/UX pass (2026-07-01) added three real help pages (size guide, shipping/returns, contact), honest out-of-stock messaging, 44px tap targets, and 16px form inputs. Nav cache bumped to v9.
 
+Desktop responsive layer (2026-07-01): a shared assets/desktop.css (@media >=900px only) plus class hooks widen and reflow the site on desktop — 1180px shell with a full-width mega menu + 3-column footer, 2-column product pages (sticky gallery left, buy panel with in-panel Add to Bag right), a 2-column home (side-by-side option cards, split maker block, 4-up watch chips), and centred reading pages. The mobile build below 900px is untouched. Nav cache bumped to v10.
+
 ## Pages (12)
 
 | Page | Loads | Console errors | `<main>` | Shared header/footer | Nav cache |
@@ -75,6 +77,9 @@ Mobile/UX pass (2026-07-01) added three real help pages (size guide, shipping/re
 | Header icons, footer links, size-chart trigger, add-on buttons meet 44px tap target | pass |
 | Made-to-order measurement inputs are 16px (no iOS focus zoom) | pass |
 | No dead href="#" links anywhere; social placeholders are non-clickable "Soon" chips | pass |
+| Desktop (>=900px): no page has horizontal overflow; content uses full width | pass |
+| Desktop product pages are 2-column with an in-panel Add to Bag (fixed bar hidden) | pass |
+| Mobile (<900px) unchanged by the desktop layer (main stays ~390px, sticky bar shown) | pass |
 
 ## Content and brand
 
@@ -92,6 +97,6 @@ Mobile/UX pass (2026-07-01) added three real help pages (size guide, shipping/re
 
 * Checkout is a demo. The cart is client side only. Real payments arrive with the Shopify Liquid build (native Shopify checkout), not a custom backend.
 * Social channels in Watch me make it and the maker page now render as non-clickable "Soon" chips, and Contact routes to the studio-notes signup. Real streaming handles are still needed before Organization `sameAs` and reviews (`AggregateRating`) can be added truthfully.
-* Desktop is still a single 440px mobile column; a responsive desktop layout (2-column product pages, hover mega menu) is the next pass.
+* Desktop mega menu opens on click of "Shop" (not hover); a hover-intent trigger is a later refinement.
 * Gallery still uses dots for swipe; height is reserved but arrows or a peek are a later pass.
 * Site is on a github.io project path; a custom domain is recommended.

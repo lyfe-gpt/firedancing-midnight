@@ -1,0 +1,47 @@
+/* Firedancing desktop layer (prototype).
+   The mobile-first layout lives inline on each page and is the source of
+   truth below 900px. These rules only widen and reflow at >=900px, so the
+   phone build is untouched. Overrides of inline max-width use !important by
+   necessity (the base widths are inline styles). */
+
+@media (min-width: 900px) {
+
+  /* ---------- Shared shell (header / mega / footer) ---------- */
+  .fd-hdr-inner { max-width: 1180px !important; }
+  #navMenuBtn { display: none !important; }              /* hamburger is redundant once the mega menu shows */
+  .fd-mega-inner { max-width: 1180px !important; }
+  .fd-mega-cards { flex-direction: row !important; }
+  .fd-mega-cards > a { flex: 1 1 0; }
+  .fd-ftr-inner { max-width: 1180px !important; }
+  .fd-ftr-inner > p { max-width: 440px; }
+  .fd-ftr-grid { grid-template-columns: repeat(3, minmax(0, 220px)) !important; gap: 24px 48px !important; }
+
+  /* ---------- Reading pages (centred, comfortable measure) ---------- */
+  #main.fd-read { max-width: 760px !important; }
+
+  /* ---------- Home ---------- */
+  #main.fd-home { max-width: 1180px !important; }
+  .fd-home-hero { max-width: 760px; }
+  .fd-home-cards { flex-direction: row !important; }
+  .fd-home-cards > a { flex: 1 1 0; height: 520px !important; }
+  .fd-home-maker { display: grid !important; grid-template-columns: 1.1fr 1fr; align-items: stretch; }
+  .fd-home-maker > img { height: 100% !important; aspect-ratio: auto !important; min-height: 340px; }
+  .fd-home-watch { grid-template-columns: repeat(4, 1fr) !important; }
+  .fd-home-journal { display: grid !important; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; overflow: visible !important; gap: 22px !important; }
+  .fd-home-journal > a { flex: initial !important; width: auto !important; }
+
+  /* ---------- Product pages (gallery left, buy panel right) ---------- */
+  #main.fd-pdp {
+    max-width: 1140px !important;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 420px;
+    column-gap: 48px;
+    align-items: start;
+    padding-bottom: 48px !important;
+  }
+  .fd-pdp-media { grid-column: 1; position: sticky; top: 74px; }
+  .fd-pdp-buy  { grid-column: 2; }
+  .fd-pdp-full { grid-column: 1 / -1; }
+  .fd-buy-desktop { display: block !important; }
+  .fd-sticky { display: none !important; }               /* replaced by the in-panel button on desktop */
+}
