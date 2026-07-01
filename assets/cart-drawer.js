@@ -1,4 +1,4 @@
-/* Midnight — Cart Drawer (vanilla port of Cart Drawer.dc.html) */
+/* Midnight - Cart Drawer (vanilla port of Cart Drawer.dc.html) */
 (function () {
   var mounted = false, isOpen = false, root;
 

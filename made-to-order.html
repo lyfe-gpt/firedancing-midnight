@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Build your fit — Midnight Made to Order</title>
+<title>Build your fit · Firedancing Made to Order</title>
+<meta name="description" content="Build a made-to-order slitweave catsuit or bodysuit. Choose silhouette, dye, ties, cutouts and your own measurements. Hand-cut and laced in about 2 to 4 weeks.">
+
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -14,25 +16,12 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
 @keyframes toastIn{from{transform:translateY(130%);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes mcFade{from{opacity:0}to{opacity:1}}
 @keyframes mcSlide{from{transform:translateX(100%)}to{transform:translateX(0)}}
+@keyframes mcSlideUp{from{transform:translateX(-50%) translateY(100%)}to{transform:translateX(-50%) translateY(0)}}
 </style>
 </head>
 <body>
+<div id="site-header"></div>
 <div style="max-width:440px;margin:0 auto;position:relative;min-height:100vh;background:#121212;padding-bottom:96px;overflow-x:hidden">
-
-  <header style="position:sticky;top:0;z-index:60;background:rgba(0,0,0,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);height:54px;display:flex;align-items:center;padding:0 16px">
-    <a href="index.html" style="font-size:20px;color:#fff;cursor:pointer;line-height:1;text-decoration:none">‹</a>
-    <a href="index.html" style="margin:0 auto;display:flex;align-items:center;gap:8px">
-      <span style="width:26px;height:26px;border-radius:50%;background:#ff3b3b;display:grid;place-items:center;color:#fff;font-weight:900;font-size:15px">M</span>
-      <span style="font-weight:800;font-size:16px;letter-spacing:.16em">MIDNIGHT</span>
-    </a>
-    <div style="display:flex;align-items:center;gap:16px">
-      <span style="font-size:17px;color:#d6d6d6;cursor:pointer">⌕</span>
-      <div id="cartBtn" style="position:relative;cursor:pointer">
-        <span style="font-size:18px;color:#fff">▦</span>
-        <span id="cartBadge" style="display:none;position:absolute;top:-7px;right:-8px;background:#ff3b3b;color:#fff;font-size:9px;font-weight:800;min-width:15px;height:15px;border-radius:500px;place-items:center;padding:0 3px"></span>
-      </div>
-    </div>
-  </header>
 
   <!-- GALLERY -->
   <div style="position:relative;background:#000">
@@ -46,7 +35,7 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
 
   <!-- TITLE -->
   <div style="padding:20px 20px 0">
-    <h1 style="font-size:25px;font-weight:800;line-height:1.1;letter-spacing:-.01em;margin:0 0 5px">Groove Lace-Up Catsuit</h1>
+    <h1 style="font-size:25px;font-weight:800;line-height:1.1;letter-spacing:-.01em;margin:0 0 5px">Groove Slitweave Catsuit</h1>
     <p style="margin:0 0 16px;color:#a7a7a7;font-size:14px;font-weight:500">Hand-finished to your spec · from $130</p>
   </div>
 
@@ -54,7 +43,7 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
   <div style="margin:0 20px 8px;display:flex;align-items:center;gap:12px;background:rgba(255,59,59,.09);border:1px solid rgba(255,59,59,.3);border-radius:12px;padding:14px 16px">
     <span style="width:34px;height:34px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:15px">✂</span>
     <div>
-      <div style="font-size:13px;font-weight:800;color:#ff3b3b">Made to order — ships in 2–4 weeks</div>
+      <div style="font-size:13px;font-weight:800;color:#ff3b3b">Made to order - ships in 2-4 weeks</div>
       <div style="font-size:12px;color:#a7a7a7;font-weight:500">Each piece is cut and sewn for you after checkout.</div>
     </div>
   </div>
@@ -90,7 +79,7 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
     </div>
 
     <div style="height:1px;background:rgba(255,255,255,.1);margin:0 0 26px"></div>
-    <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:#ff3b3b;margin-bottom:20px">FIT &amp; DETAILS — NO EXTRA COST</div>
+    <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:#ff3b3b;margin-bottom:20px">FIT &amp; DETAILS - NO EXTRA COST</div>
 
     <div style="margin-bottom:24px">
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px"><span style="font-size:13px;font-weight:800">Length</span><span style="color:#ff3b3b;font-weight:800">*</span></div>
@@ -125,26 +114,26 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
     <div style="margin-bottom:24px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
         <div style="display:flex;align-items:center;gap:6px"><span style="font-size:13px;font-weight:800">Size</span><span style="color:#ff3b3b;font-weight:800">*</span></div>
-        <a href="#" style="font-size:12px;font-weight:600;color:#a7a7a7;text-decoration:underline;text-underline-offset:3px">Size chart</a>
+        <button id="sizeGuideBtn" style="background:none;border:none;font-size:12px;font-weight:600;color:#a7a7a7;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:Figtree,sans-serif">Size chart</button>
       </div>
-      <div id="sizeOpts" style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px"></div>
+      <div id="sizeOpts" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px"></div>
       <div id="errSize"></div>
     </div>
 
-    <!-- CUSTOM MEASUREMENTS (static — no re-render, preserves focus) -->
+    <!-- CUSTOM MEASUREMENTS (static - no re-render, preserves focus) -->
     <div style="margin-bottom:24px">
       <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px"><span style="font-size:13px;font-weight:800">Custom measurements</span><span style="font-size:11px;color:#8f8f8f;font-weight:600">Optional</span></div>
       <p style="margin:0 0 12px;font-size:12px;color:#a7a7a7;font-weight:500">Add these and we'll tailor the fit to you (inches).</p>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
-        <label style="display:block"><span style="display:block;font-size:11px;color:#8f8f8f;font-weight:700;margin-bottom:6px">BUST</span><input id="bust" inputmode="decimal" placeholder="—" style="width:100%;height:46px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#181818;color:#fff;text-align:center;font-size:15px;font-weight:600" /></label>
-        <label style="display:block"><span style="display:block;font-size:11px;color:#8f8f8f;font-weight:700;margin-bottom:6px">WAIST</span><input id="waist" inputmode="decimal" placeholder="—" style="width:100%;height:46px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#181818;color:#fff;text-align:center;font-size:15px;font-weight:600" /></label>
-        <label style="display:block"><span style="display:block;font-size:11px;color:#8f8f8f;font-weight:700;margin-bottom:6px">HIP</span><input id="hip" inputmode="decimal" placeholder="—" style="width:100%;height:46px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#181818;color:#fff;text-align:center;font-size:15px;font-weight:600" /></label>
+        <label style="display:block"><span style="display:block;font-size:11px;color:#8f8f8f;font-weight:700;margin-bottom:6px">BUST</span><input id="bust" inputmode="decimal" placeholder="-" style="width:100%;height:46px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#181818;color:#fff;text-align:center;font-size:15px;font-weight:600" /></label>
+        <label style="display:block"><span style="display:block;font-size:11px;color:#8f8f8f;font-weight:700;margin-bottom:6px">WAIST</span><input id="waist" inputmode="decimal" placeholder="-" style="width:100%;height:46px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#181818;color:#fff;text-align:center;font-size:15px;font-weight:600" /></label>
+        <label style="display:block"><span style="display:block;font-size:11px;color:#8f8f8f;font-weight:700;margin-bottom:6px">HIP</span><input id="hip" inputmode="decimal" placeholder="-" style="width:100%;height:46px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#181818;color:#fff;text-align:center;font-size:15px;font-weight:600" /></label>
       </div>
     </div>
 
     <div style="margin-bottom:8px">
       <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:10px"><span style="font-size:13px;font-weight:800">Notes to maker</span><span style="font-size:11px;color:#8f8f8f;font-weight:600">Optional</span></div>
-      <textarea id="notes" rows="3" placeholder="Anything else we should know — reference looks, event date, lacing preferences…" style="width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#181818;color:#fff;padding:12px 14px;font-size:14px;font-weight:500;resize:vertical;line-height:1.5"></textarea>
+      <textarea id="notes" rows="3" placeholder="Anything else we should know - reference looks, event date, lacing preferences…" style="width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#181818;color:#fff;padding:12px 14px;font-size:14px;font-weight:500;resize:vertical;line-height:1.5"></textarea>
     </div>
   </div>
 
@@ -161,18 +150,10 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
   <section style="margin:32px 20px 0">
     <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:#ff3b3b;margin-bottom:16px">HOW MADE-TO-ORDER WORKS</div>
     <div style="display:flex;gap:14px;margin-bottom:14px"><span style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">1</span><div><div style="font-size:14px;font-weight:700">Build &amp; checkout</div><div style="font-size:13px;color:#a7a7a7;line-height:1.45">Your spec travels with the order to our maker.</div></div></div>
-    <div style="display:flex;gap:14px;margin-bottom:14px"><span style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">2</span><div><div style="font-size:14px;font-weight:700">We cut &amp; sew</div><div style="font-size:13px;color:#a7a7a7;line-height:1.45">Hand-finished to your fit — you'll get a confirmation email.</div></div></div>
-    <div style="display:flex;gap:14px"><span style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">3</span><div><div style="font-size:14px;font-weight:700">Ships in 2–4 weeks</div><div style="font-size:13px;color:#a7a7a7;line-height:1.45">Made-to-order pieces are final sale.</div></div></div>
+    <div style="display:flex;gap:14px;margin-bottom:14px"><span style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">2</span><div><div style="font-size:14px;font-weight:700">We cut &amp; sew</div><div style="font-size:13px;color:#a7a7a7;line-height:1.45">Hand-finished to your fit - you'll get a confirmation email.</div></div></div>
+    <div style="display:flex;gap:14px"><span style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">3</span><div><div style="font-size:14px;font-weight:700">Ships in 2-4 weeks</div><div style="font-size:13px;color:#a7a7a7;line-height:1.45">Made-to-order pieces are final sale.</div></div></div>
   </section>
 
-  <footer style="margin-top:40px;border-top:1px solid rgba(255,255,255,.08);background:#0a0a0a;padding:30px 20px 28px">
-    <div style="display:flex;align-items:center;gap:9px;margin-bottom:10px">
-      <span style="width:24px;height:24px;border-radius:50%;background:#ff3b3b;display:grid;place-items:center;color:#fff;font-weight:900;font-size:13px">M</span>
-      <span style="font-weight:800;font-size:14px;letter-spacing:.16em">MIDNIGHT</span>
-    </div>
-    <p style="margin:0 0 4px;font-size:12px;color:#8f8f8f;line-height:1.55">Performance-grade stagewear, made to order for artists who live after dark.</p>
-    <div style="margin-top:20px;font-size:11px;color:#6f6f6f;font-weight:500">© 2026 Midnight Stagewear · Privacy · Terms</div>
-  </footer>
 
   <!-- STICKY ADD TO CART -->
   <div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(440px,100%);z-index:80;background:rgba(10,10,10,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.12);padding:12px 16px;display:flex;align-items:center;gap:12px">
@@ -184,14 +165,19 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
   </div>
 
   <div id="toastRoot"></div>
+  <div id="sizeChartRoot"></div>
 </div>
+
+<div id="site-footer"></div>
 
 <script src="assets/cart.js"></script>
 <script src="assets/cart-drawer.js"></script>
+<script src="assets/site-nav.js"></script>
 <script>
 (function () {
   var state = {
     silhouette: 'catsuit', dye: 'none', ties: 'cloth', belt: false,
+    sizeChart: false,
     length: null, neckline: null, cleavage: null, slit: null, color: null, size: null,
     showErr: false, hero: 0, toast: false
   };
@@ -208,9 +194,28 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
     neckline: ['Scoop neck', 'Spaghetti strap'],
     cleavage: ['Standard', 'Plunge'],
     slit: ['Narrow', 'Medium', 'Wide'],
-    size: ['XS', 'S', 'M', 'L', 'XL']
+    size: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL']
   };
   var dyeLabelMap = { none: 'None', tie: 'Tie-dye', bleach: 'Bleach-dye' };
+  var sizeChartRows = [
+    ['XS', '30-32', '23-25', '33-35'], ['S', '32-34', '25-27', '35-37'], ['M', '34-36', '27-29', '37-39'],
+    ['L', '36-38', '29-31', '39-41'], ['XL', '38-41', '31-34', '41-44'], ['2XL', '41-44', '34-37', '44-47'],
+    ['3XL', '44-47', '37-40', '47-50'], ['4XL', '47-50', '40-43', '50-53']
+  ];
+  function renderSizeChart() {
+    var r = document.getElementById('sizeChartRoot');
+    if (!state.sizeChart) { r.innerHTML = ''; return; }
+    var rows = sizeChartRows.map(function (c) {
+      return '<tr><td style="padding:9px 8px;font-weight:800">' + c[0] + '</td><td style="padding:9px 8px;color:#cfcfcf">' + c[1] + '</td><td style="padding:9px 8px;color:#cfcfcf">' + c[2] + '</td><td style="padding:9px 8px;color:#cfcfcf">' + c[3] + '</td></tr>';
+    }).join('');
+    r.innerHTML = '<div style="position:fixed;inset:0;z-index:9000;font-family:Figtree,sans-serif">' +
+      '<div data-act="closechart" style="position:absolute;inset:0;background:rgba(0,0,0,.7);animation:mcFade .2s ease"></div>' +
+      '<div style="position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(440px,100%);background:#141414;border-top-left-radius:20px;border-top-right-radius:20px;border:1px solid rgba(255,255,255,.1);padding:22px 20px calc(24px + env(safe-area-inset-bottom));animation:mcSlideUp .28s cubic-bezier(.2,.8,.2,1)">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><h3 style="margin:0;font-size:18px;font-weight:800">Size chart</h3><button data-act="closechart" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer">×</button></div>' +
+        '<p style="margin:0 0 14px;font-size:12px;color:#a7a7a7">Body measurements in inches. Between sizes, add your own measurements below and we will tailor the fit.</p>' +
+        '<table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr style="text-align:left;color:#8f8f8f;font-size:11px;letter-spacing:.06em"><th style="padding:0 8px 8px">SIZE</th><th style="padding:0 8px 8px">BUST</th><th style="padding:0 8px 8px">WAIST</th><th style="padding:0 8px 8px">HIP</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+      '</div></div>';
+  }
 
   var gallery = document.getElementById('gallery');
   var galColor = null, toastTimer = null;
@@ -274,7 +279,7 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
     galColor = gkey;
     var imgs = galleries[gkey];
     gallery.innerHTML = imgs.map(function (src) {
-      return '<img src="' + src + '" alt="Groove Lace-Up Catsuit" style="flex:0 0 100%;width:100%;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:center;display:block" />';
+      return '<img src="' + src + '" alt="Groove Slitweave Catsuit" style="flex:0 0 100%;width:100%;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:center;display:block" />';
     }).join('');
     gallery.scrollLeft = 0; state.hero = 0;
     renderDots();
@@ -314,13 +319,13 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
     document.getElementById('beltKnob').setAttribute('style', 'position:absolute;top:3px;left:' + (state.belt ? '25px' : '3px') + ';width:24px;height:24px;border-radius:50%;background:#fff;transition:.18s');
 
     // color label
-    document.getElementById('colorLabel').textContent = state.color ? '— ' + (colors.find(function (c) { return c.key === state.color; }) || {}).label : '';
+    document.getElementById('colorLabel').textContent = state.color ? '- ' + (colors.find(function (c) { return c.key === state.color; }) || {}).label : '';
 
     // errors
     var miss = missing();
     document.getElementById('errBanner').innerHTML = (state.showErr && miss.length) ?
       ('<div style="margin:12px 20px 0;background:rgba(255,90,90,.1);border:1px solid rgba(255,90,90,.45);border-radius:12px;padding:13px 15px">' +
-        '<div style="font-size:13px;font-weight:800;color:#ff6b6b;margin-bottom:3px">Almost there — a few choices left</div>' +
+        '<div style="font-size:13px;font-weight:800;color:#ff6b6b;margin-bottom:3px">Almost there - a few choices left</div>' +
         '<div style="font-size:12px;color:#ffb0b0;font-weight:600">Please select: ' + miss.join(', ') + '</div></div>') : '';
     document.getElementById('errLength').innerHTML = (state.showErr && !state.length) ? errP('Please choose a length.') : '';
     document.getElementById('errNeckline').innerHTML = (state.showErr && !state.neckline) ? errP('Please choose a neckline.') : '';
@@ -342,11 +347,6 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
     document.getElementById('totalSummary').textContent = t;
     document.getElementById('totalSticky').textContent = t;
 
-    // cart badge
-    var c = window.MidnightCart ? window.MidnightCart.count() : 0;
-    var b = document.getElementById('cartBadge');
-    b.textContent = c; b.style.display = c > 0 ? 'grid' : 'none';
-
     renderToast();
   }
 
@@ -357,7 +357,7 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
     var colorLabel = (colors.find(function (c) { return c.key === state.color; }) || {}).label || '';
     r.innerHTML = '<div style="position:fixed;left:50%;bottom:86px;transform:translateX(-50%);z-index:100;width:min(408px,calc(100% - 32px));background:#ff3b3b;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;box-shadow:0 16px 40px rgba(0,0,0,.5);animation:toastIn .32s cubic-bezier(.2,.8,.2,1)">' +
       '<span style="width:36px;height:36px;flex:0 0 auto;border-radius:50%;background:#000;color:#ff3b3b;display:grid;place-items:center;font-size:16px">✓</span>' +
-      '<div style="flex:1;color:#fff;min-width:0"><div style="font-size:10px;font-weight:800;letter-spacing:.06em;opacity:.7">ADDED — MADE TO ORDER</div>' +
+      '<div style="flex:1;color:#fff;min-width:0"><div style="font-size:10px;font-weight:800;letter-spacing:.06em;opacity:.7">ADDED - MADE TO ORDER</div>' +
       '<div style="font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(silLabel) + ' · ' + esc(colorLabel) + ' · ' + esc(state.size || '') + '</div></div>' +
       '<a href="cart.html" style="background:#000;color:#fff;border:none;border-radius:500px;padding:9px 15px;font-size:12px;font-weight:800;cursor:pointer;flex:0 0 auto;text-decoration:none">View Cart</a></div>';
   }
@@ -376,7 +376,7 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
     };
     var C = window.MidnightCart;
     if (C) {
-      C.add({ id: 'mto|' + variant, title: 'Groove Lace-Up Catsuit', variant: variant, price: total(), img: img, madeToOrder: true, fit: fit });
+      C.add({ id: 'mto|' + variant, title: 'Groove Slitweave Catsuit', variant: variant, price: total(), img: img, madeToOrder: true, fit: fit });
       C.open();
     }
     state.showErr = false;
@@ -392,7 +392,8 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
   });
   document.getElementById('beltBtn').addEventListener('click', function () { state.belt = !state.belt; render(); });
   document.getElementById('addBtn').addEventListener('click', addToCart);
-  document.getElementById('cartBtn').addEventListener('click', function () { window.MidnightCart.open(); });
+  document.getElementById('sizeGuideBtn').addEventListener('click', function () { state.sizeChart = true; renderSizeChart(); });
+  document.getElementById('sizeChartRoot').addEventListener('click', function (e) { if (e.target.closest('[data-act="closechart"]')) { state.sizeChart = false; renderSizeChart(); } });
   gallery.addEventListener('scroll', function () {
     var w = gallery.clientWidth || 1, i = Math.round(gallery.scrollLeft / w);
     if (i !== state.hero) { state.hero = i; renderDots(); }
