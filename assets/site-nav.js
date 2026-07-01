@@ -19,45 +19,53 @@
       '<span style="font-weight:800;font-size:16px;letter-spacing:.16em">FIREDANCING</span></a>';
   }
 
-  // ---- Mega menu data ----
-  var MEGA = [
-    { title: 'Ready to Ship', note: 'In stock now', links: [['product.html', 'Shop the drop'], ['product.html', 'Catsuits'], ['product.html', 'Bodysuits']] },
-    { title: 'Made to Order', note: 'Built for you · 2-4 wks', links: [['made-to-order.html', 'Build your fit'], ['made-to-order.html', 'Chain belt & add-ons']] },
-    { title: 'Explore', note: '', links: [['blog.html', 'Journal'], ['index.html#maker', 'The maker'], ['index.html#watch', 'Watch me make it']] }
+  // ---- Nav data: two products + made to order ----
+  var PRODUCTS = [
+    { href: 'catsuit.html', title: 'Slitweave Catsuit', sub: 'Ready to ship · from $148', img: 'assets/product/black-catsuit-1.jpg' },
+    { href: 'bodysuit.html', title: 'Slitweave Bodysuit', sub: 'Ready to ship · from $128', img: 'assets/product/black-bodysuit-2.jpg' },
+    { href: 'made-to-order.html', title: 'Build your fit', sub: 'Made to order · 2-4 weeks', img: 'assets/product/white-catsuit-1.jpg' }
   ];
+  var EXPLORE = [['blog.html', 'Journal'], ['index.html#maker', 'The maker'], ['index.html#watch', 'Watch me make it']];
+
+  function eyebrow(t, m) { return '<div style="font-size:11px;font-weight:800;letter-spacing:.12em;color:' + RED + ';text-transform:uppercase;margin:' + m + '">' + t + '</div>'; }
 
   function megaPanelHtml() {
-    var cols = MEGA.map(function (c) {
-      var links = c.links.map(function (l) {
-        return '<a href="' + l[0] + '" data-nav-link style="display:block;font-size:14px;color:#cfcfcf;font-weight:600;padding:7px 0">' + l[1] + '</a>';
-      }).join('');
-      return '<div style="min-width:0"><div style="font-size:11px;font-weight:800;letter-spacing:.12em;color:' + RED + ';text-transform:uppercase;margin-bottom:8px">' + c.title + '</div>' +
-        (c.note ? '<div style="font-size:11px;color:#8f8f8f;font-weight:600;margin-bottom:6px">' + c.note + '</div>' : '') + links + '</div>';
+    var cards = PRODUCTS.map(function (p) {
+      return '<a href="' + p.href + '" data-nav-link style="display:flex;gap:12px;align-items:center;padding:8px;border-radius:12px;background:#151515;border:1px solid rgba(255,255,255,.08)">' +
+        '<img src="' + p.img + '" loading="lazy" decoding="async" style="width:56px;height:70px;object-fit:cover;border-radius:8px;flex:0 0 auto;background:#000" alt="' + p.title + '" />' +
+        '<span style="min-width:0"><span style="display:block;font-size:14px;font-weight:800">' + p.title + '</span><span style="display:block;font-size:12px;color:#8f8f8f;font-weight:600">' + p.sub + '</span></span></a>';
+    }).join('');
+    var explore = EXPLORE.map(function (l) {
+      return '<a href="' + l[0] + '" data-nav-link style="font-size:13px;color:#cfcfcf;font-weight:600">' + l[1] + '</a>';
     }).join('');
     return '<div id="megaPanel" style="display:none;position:absolute;left:0;right:0;top:100%;background:#0f0f0f;border-bottom:1px solid rgba(255,255,255,.1);box-shadow:0 24px 50px rgba(0,0,0,.5);z-index:59">' +
-      '<div style="max-width:440px;margin:0 auto;padding:20px 20px 22px;display:grid;grid-template-columns:1fr 1fr;gap:20px 16px">' + cols +
-      '<a href="product.html" data-nav-link style="grid-column:1 / -1;position:relative;height:120px;border-radius:14px;overflow:hidden;display:block;margin-top:2px">' +
-        '<img src="assets/product/duo-lifestyle.jpg" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%" alt="Featured duo drop" />' +
-        '<span style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.8),rgba(0,0,0,.15))"></span>' +
-        '<span style="position:absolute;left:16px;top:50%;transform:translateY(-50%)"><span style="display:block;font-size:11px;font-weight:800;letter-spacing:.12em;color:' + RED + '">NEW</span><span style="display:block;font-size:16px;font-weight:800">The duo drop →</span></span>' +
-      '</a></div></div>';
+      '<div style="max-width:440px;margin:0 auto;padding:16px 18px 20px">' +
+        eyebrow('Shop', '0 0 10px') +
+        '<div style="display:flex;flex-direction:column;gap:10px">' + cards + '</div>' +
+        eyebrow('Explore', '16px 0 8px') +
+        '<div style="display:flex;gap:16px;flex-wrap:wrap">' + explore + '</div>' +
+      '</div></div>';
   }
 
-  // ---- Mobile menu ----
+  // ---- Mobile menu (with product photos) ----
   function mobileMenuHtml() {
-    var sections = MEGA.map(function (c) {
-      var links = c.links.map(function (l) {
-        return '<a href="' + l[0] + '" data-nav-link style="display:block;font-size:16px;color:#e6e6e6;font-weight:600;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06)">' + l[1] + '</a>';
-      }).join('');
-      return '<div style="margin-bottom:18px"><div style="font-size:11px;font-weight:800;letter-spacing:.12em;color:' + RED + ';text-transform:uppercase;margin-bottom:4px">' + c.title + '</div>' + links + '</div>';
+    var cards = PRODUCTS.map(function (p) {
+      return '<a href="' + p.href + '" data-nav-link style="display:flex;gap:14px;align-items:center;padding:10px;border-radius:12px;background:#151515;border:1px solid rgba(255,255,255,.08);margin-bottom:10px">' +
+        '<img src="' + p.img + '" loading="lazy" decoding="async" style="width:64px;height:80px;object-fit:cover;border-radius:8px;flex:0 0 auto;background:#000" alt="' + p.title + '" />' +
+        '<span style="min-width:0"><span style="display:block;font-size:16px;font-weight:800">' + p.title + '</span><span style="display:block;font-size:12px;color:#8f8f8f;font-weight:600">' + p.sub + '</span></span></a>';
+    }).join('');
+    var explore = EXPLORE.map(function (l) {
+      return '<a href="' + l[0] + '" data-nav-link style="display:block;font-size:16px;color:#e6e6e6;font-weight:600;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06)">' + l[1] + '</a>';
     }).join('');
     return '<div id="mobileMenu" style="display:none;position:fixed;inset:0;z-index:9500;font-family:Figtree,system-ui,sans-serif">' +
       '<div data-nav-close style="position:absolute;inset:0;background:rgba(0,0,0,.6);animation:mcFade .2s ease"></div>' +
-      '<div style="position:absolute;top:0;left:0;height:100%;width:min(340px,86vw);background:#101010;border-right:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;animation:navSlideL .28s cubic-bezier(.2,.8,.2,1);box-shadow:24px 0 60px rgba(0,0,0,.5)">' +
+      '<div style="position:absolute;top:0;left:0;height:100%;width:min(360px,90vw);background:#101010;border-right:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;animation:navSlideL .28s cubic-bezier(.2,.8,.2,1);box-shadow:24px 0 60px rgba(0,0,0,.5)">' +
         '<div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.1)">' + logo(24) +
           '<button data-nav-close aria-label="Close menu" style="background:none;border:none;color:#fff;cursor:pointer;padding:2px">' + ICON.close + '</button></div>' +
-        '<div style="flex:1;overflow-y:auto;padding:20px 20px 30px">' + sections +
-          '<a href="cart.html" data-nav-link style="display:inline-flex;align-items:center;gap:8px;margin-top:6px;color:#fff;font-weight:700;font-size:15px">' + ICON.bag + ' Your bag</a>' +
+        '<div style="flex:1;overflow-y:auto;padding:18px 18px 30px">' +
+          eyebrow('Shop', '0 0 10px') + cards +
+          eyebrow('Explore', '16px 0 4px') + explore +
+          '<a href="cart.html" data-nav-link style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:#fff;font-weight:700;font-size:15px">' + ICON.bag + ' Your bag</a>' +
         '</div></div></div>';
   }
 
@@ -74,8 +82,8 @@
           '</div>' +
           '<div style="margin-top:14px;font-size:11px;font-weight:800;letter-spacing:.1em;color:#8f8f8f">POPULAR</div>' +
           '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">' +
-            ['Groove catsuit', 'Bodysuit', 'Tie-dye', 'Made to order', 'Chain belt'].map(function (t) {
-              return '<a href="product.html" data-nav-link style="font-size:13px;font-weight:600;color:#e6e6e6;background:#1a1a1a;border:1px solid rgba(255,255,255,.14);border-radius:500px;padding:7px 13px">' + t + '</a>';
+            [['Catsuit', 'catsuit.html'], ['Bodysuit', 'bodysuit.html'], ['Tie-dye', 'made-to-order.html'], ['Made to order', 'made-to-order.html'], ['Chain belt', 'made-to-order.html']].map(function (t) {
+              return '<a href="' + t[1] + '" data-nav-link style="font-size:13px;font-weight:600;color:#e6e6e6;background:#1a1a1a;border:1px solid rgba(255,255,255,.14);border-radius:500px;padding:7px 13px">' + t[0] + '</a>';
             }).join('') +
           '</div></div></div></div>';
   }
@@ -98,7 +106,7 @@
         '<div style="margin-bottom:12px">' + logo(26) + '</div>' +
         '<p style="margin:0 0 22px;font-size:13px;color:#8f8f8f;line-height:1.55">Hand-cut slitweave stagewear, made by one pair of hands for artists who live after dark.</p>' +
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px 16px">' +
-          col('SHOP', [['product.html', 'Ready to Ship'], ['made-to-order.html', 'Made to Order'], ['product.html', 'Catsuits'], ['product.html', 'Bodysuits']]) +
+          col('SHOP', [['catsuit.html', 'Slitweave Catsuit'], ['bodysuit.html', 'Slitweave Bodysuit'], ['made-to-order.html', 'Made to Order']]) +
           col('EXPLORE', [['blog.html', 'Journal'], ['index.html#maker', 'The maker'], ['index.html#watch', 'Watch me make it']]) +
           col('HELP', [['#', 'Size guide'], ['#', 'Shipping'], ['#', 'Returns'], ['#', 'Contact']]) +
         '</div>' +
@@ -153,7 +161,7 @@
     var shopBtn = document.getElementById('navShopBtn');
     var searchBtn = document.getElementById('navSearchBtn');
     if (menuBtn) menuBtn.addEventListener('click', function () { closeAll(); document.getElementById('mobileMenu').style.display = 'block'; });
-    if (searchBtn) searchBtn.addEventListener('click', function () { closeAll(); document.getElementById('searchOverlay').style.display = 'block'; var i = document.getElementById('searchInput'); if (i) { setTimeout(function () { i.focus(); }, 60); i.onkeydown = function (e) { if (e.key === 'Enter') location.href = 'product.html'; }; } });
+    if (searchBtn) searchBtn.addEventListener('click', function () { closeAll(); document.getElementById('searchOverlay').style.display = 'block'; var i = document.getElementById('searchInput'); if (i) { setTimeout(function () { i.focus(); }, 60); i.onkeydown = function (e) { if (e.key === 'Enter') location.href = 'catsuit.html'; }; } });
     if (shopBtn) shopBtn.addEventListener('click', function () {
       var mp = document.getElementById('megaPanel'), chev = document.getElementById('navShopChev');
       var open = mp.style.display === 'block';
