@@ -21,7 +21,7 @@
 
   // ---- Mega menu data ----
   var MEGA = [
-    { title: 'Ready to Ship', note: 'Ships in 1-2 days', links: [['product.html', 'Shop the drop'], ['product.html', 'Catsuits'], ['product.html', 'Bodysuits']] },
+    { title: 'Ready to Ship', note: 'In stock now', links: [['product.html', 'Shop the drop'], ['product.html', 'Catsuits'], ['product.html', 'Bodysuits']] },
     { title: 'Made to Order', note: 'Built for you · 2-4 wks', links: [['made-to-order.html', 'Build your fit'], ['made-to-order.html', 'Chain belt & add-ons']] },
     { title: 'Explore', note: '', links: [['blog.html', 'Journal'], ['index.html#maker', 'The maker'], ['index.html#watch', 'Watch me make it']] }
   ];
