@@ -171,6 +171,20 @@
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
 
+    // Belt-and-suspenders: hide the Shop mega trigger on mobile by viewport,
+    // independent of the injected stylesheet (covers any CSS caching/specificity edge).
+    function applyBreakpoint() {
+      var shop = document.getElementById('navShopBtn'); if (!shop) return;
+      if (window.matchMedia('(max-width:699px)').matches) {
+        shop.style.setProperty('display', 'none', 'important');
+        var mp = document.getElementById('megaPanel'); if (mp) mp.style.display = 'none';
+      } else {
+        shop.style.removeProperty('display');
+      }
+    }
+    applyBreakpoint();
+    window.addEventListener('resize', applyBreakpoint);
+
     window.addEventListener('midnight:cartchange', syncBadge);
     window.addEventListener('storage', syncBadge);
     syncBadge();
