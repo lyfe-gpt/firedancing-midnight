@@ -108,7 +108,7 @@
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px 16px">' +
           col('SHOP', [['catsuit.html', 'Slitweave Catsuit'], ['bodysuit.html', 'Slitweave Bodysuit'], ['made-to-order.html', 'Made to Order']]) +
           col('EXPLORE', [['blog.html', 'Journal'], ['index.html#maker', 'The maker'], ['index.html#watch', 'Watch me make it']]) +
-          col('HELP', [['#', 'Size guide'], ['#', 'Shipping'], ['#', 'Returns'], ['#', 'Contact']]) +
+          col('HELP', [['#', 'Size guide'], ['#', 'Shipping'], ['#', 'Care'], ['#', 'Contact']]) +
         '</div>' +
         '<div style="margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:#6f6f6f;font-weight:500">© 2026 Firedancing · Privacy · Terms</div>' +
       '</div></footer>';

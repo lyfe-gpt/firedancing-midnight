@@ -151,7 +151,7 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
     <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:#ff3b3b;margin-bottom:16px">HOW MADE-TO-ORDER WORKS</div>
     <div style="display:flex;gap:14px;margin-bottom:14px"><span style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">1</span><div><div style="font-size:14px;font-weight:700">Build &amp; checkout</div><div style="font-size:13px;color:#a7a7a7;line-height:1.45">Your spec travels with the order to our maker.</div></div></div>
     <div style="display:flex;gap:14px;margin-bottom:14px"><span style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">2</span><div><div style="font-size:14px;font-weight:700">We cut &amp; sew</div><div style="font-size:13px;color:#a7a7a7;line-height:1.45">Hand-finished to your fit - you'll get a confirmation email.</div></div></div>
-    <div style="display:flex;gap:14px"><span style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">3</span><div><div style="font-size:14px;font-weight:700">Ships in 2-4 weeks</div><div style="font-size:13px;color:#a7a7a7;line-height:1.45">Made-to-order pieces are final sale.</div></div></div>
+    <div style="display:flex;gap:14px"><span style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">3</span><div><div style="font-size:14px;font-weight:700">Ships in 2-4 weeks</div><div style="font-size:13px;color:#a7a7a7;line-height:1.45">Cut and laced just for you, so all sales are final.</div></div></div>
   </section>
 
 
@@ -173,7 +173,7 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
 
 <script src="assets/cart.js"></script>
 <script src="assets/cart-drawer.js"></script>
-<script src="assets/site-nav.js?v=5"></script>
+<script src="assets/site-nav.js?v=6"></script>
 <script>
 (function () {
   var state = {
@@ -183,9 +183,10 @@ input,textarea{font-family:Figtree,system-ui,sans-serif}
     showErr: false, hero: 0, toast: false
   };
   var galleries = {
-    // Distinct from the catsuit PDP: made-to-order shows the range and the add-ons (duo shot has belts + cuffs).
-    black: ['assets/product/duo-lifestyle.jpg', 'assets/product/black-bodysuit-2.jpg'],
-    white: ['assets/product/duo-lifestyle.jpg']
+    // Distinct from the catsuit PDP: made-to-order shows the range and the add-ons. The duo shots put both
+    // silhouettes and finishes side by side (belts, cuffs and chain belts on show), which is the build-your-fit story.
+    black: ['assets/product/duo-lifestyle.jpg', 'assets/product/mto-duo-1.jpg', 'assets/product/mto-duo-3.jpg', 'assets/product/mto-duo-5.jpg', 'assets/product/black-bodysuit-2.jpg'],
+    white: ['assets/product/mto-duo-2.jpg', 'assets/product/mto-duo-4.jpg', 'assets/product/duo-lifestyle.jpg', 'assets/product/mto-duo-1.jpg']
   };
   var colors = [
     { key: 'black', label: 'Black', hex: '#0a0a0a' },

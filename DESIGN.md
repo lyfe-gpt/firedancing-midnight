@@ -95,7 +95,7 @@ Image ownership. Do not share photos between the ready-to-ship catsuit and the c
 |---|---|
 | Catsuit product page | `black-catsuit-1..5` (five pose shots) for black, `white-catsuit-1` for white |
 | Bodysuit product page | `black-bodysuit-2` |
-| Made to order (custom build) | range and add-on shots: `duo-lifestyle`, `black-bodysuit-2`. Never the catsuit pose shots |
+| Made to order (custom build) | duo range shots that show both silhouettes and finishes together with belts and cuffs: `duo-lifestyle`, `mto-duo-1..5`, plus `black-bodysuit-2`. Never the catsuit pose shots |
 | Meet the maker | a dedicated `maker.jpg` pose |
 
 ## 9. Tone of voice
@@ -135,8 +135,10 @@ Naming: pieces get one word performance names (Groove catsuit, Ember bodysuit). 
 
 The catalogue is two products plus a made-to-order builder. Each product has its own URL and title, and the two experiences stay distinct in layout, copy, and imagery.
 
-* Ready to Ship, Slitweave Catsuit (`catsuit.html`, $148). Pick colour (Onyx Black, Ghost White) and size, add to bag. In stock, returnable within 30 days. A fast pick-and-buy with no add-ons. Its gallery is the five dedicated catsuit pose shots.
-* Ready to Ship, Slitweave Bodysuit (`bodysuit.html`, $128). Onyx Black, pick size, add to bag. In stock, returnable. No add-ons.
+* Ready to Ship, Slitweave Catsuit (`catsuit.html`, $148). Pick colour (Onyx Black, Ghost White) and size, add to bag. In stock. A fast pick-and-buy with no add-ons. Its gallery is the five dedicated catsuit pose shots.
+* Ready to Ship, Slitweave Bodysuit (`bodysuit.html`, $128). Onyx Black, pick size, add to bag. In stock. No add-ons.
+
+Every piece is hand-cut and one of a kind, so there are no returns anywhere on the site: all sales are final, ready-to-ship and made-to-order alike. Copy leans on craft and care (hand wash cold, lay flat) rather than a returns policy.
 * Made to Order, Build your fit (`made-to-order.html`). The configurator, and the only experience with add-ons. Base bodysuit $130 or catsuit $150, plus dye (+$40), metal ties (+$25), and chain belt (+$25), then zero-cost fit choices (length, neckline, cleavage depth, side-slit width, size) and optional custom measurements. Live price. Ships in 2 to 4 weeks, final sale.
 
 Add-ons and fit spec belong only to made to order. The ready-to-ship pages never show a configurator or add-ons.
