@@ -2,6 +2,8 @@
 
 Scripted and in-browser checks run against the local build on 2026-07-01 before deploy. Stack is static HTML, CSS, and JS. No Liquid, no framework.
 
+Latest SEO / AEO / agent-first audit (2026-07-01) added: Blog + BlogPosting JSON-LD on the journal, an llms.txt agent index at the site root, and priceValidUntil on every Offer.
+
 ## Pages (9)
 
 | Page | Loads | Console errors | `<main>` | Shared header/footer | Nav cache |
@@ -49,8 +51,11 @@ Scripted and in-browser checks run against the local build on 2026-07-01 before 
 | Product pages: per-size Offer array with SKUs and real availability | pass, 8 each |
 | Home: Organization + WebSite + FAQPage | pass |
 | Articles: Article schema; care article adds HowTo | pass |
+| Blog: journal page has Blog + BlogPosting schema for both articles | pass |
 | Maker: AboutPage + Organization + founder Person | pass |
+| Offers carry priceValidUntil (RTS per-size + MTO AggregateOffer) | pass |
 | products.json feed serves 200 and is linked from home head | pass |
+| llms.txt agent index serves 200 at site root | pass |
 
 ## Accessibility and UX
 
