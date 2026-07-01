@@ -119,15 +119,15 @@
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px 16px">' +
           col('SHOP', [['catsuit.html', 'Slitweave Catsuit'], ['bodysuit.html', 'Slitweave Bodysuit'], ['made-to-order.html', 'Made to Order']]) +
           col('EXPLORE', [['blog.html', 'Journal'], ['maker.html', 'The maker'], ['index.html#watch', 'Watch me make it']]) +
-          col('HELP', [['#', 'Size guide'], ['#', 'Shipping'], ['#', 'Care'], ['#', 'Contact']]) +
+          col('HELP', [['size-guide.html', 'Size guide'], ['shipping.html', 'Shipping'], ['post-slitweave-care.html', 'Care'], ['contact.html', 'Contact']]) +
         '</div>' +
         '<div style="margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:#9a9a9a;font-weight:500">© 2026 Firedancing · Privacy · Terms</div>' +
       '</div></footer>';
   }
   function col(head, links) {
     return '<div><div style="font-size:11px;font-weight:800;letter-spacing:.08em;color:#fff;margin-bottom:12px">' + head + '</div>' +
-      '<div style="display:flex;flex-direction:column;gap:9px;font-size:13px;color:#a7a7a7">' +
-      links.map(function (l) { return '<a href="' + l[0] + '">' + l[1] + '</a>'; }).join('') + '</div></div>';
+      '<div style="display:flex;flex-direction:column;gap:2px;font-size:13px;color:#a7a7a7">' +
+      links.map(function (l) { return '<a href="' + l[0] + '" style="display:flex;align-items:center;min-height:40px">' + l[1] + '</a>'; }).join('') + '</div></div>';
   }
 
   function syncBadge() {
@@ -155,8 +155,8 @@
       /* Keyboard focus visibility */
       'a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #ff5c5c;outline-offset:2px;border-radius:4px}',
       '.fd-skip:focus{left:12px !important}',
-      /* Comfortable tap targets in the header */
-      '#site-header button,#site-header > header a{min-height:40px}',
+      /* Comfortable tap targets in the header (44px min per WCAG) */
+      '#site-header button,#site-header > header a{min-height:44px;min-width:44px}',
       /* Respect reduced motion */
       '@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}'
     ].join('');

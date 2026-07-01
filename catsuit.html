@@ -83,10 +83,6 @@ a{color:inherit;text-decoration:none}
   <div style="position:relative;background:#000">
     <div id="gallery" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;aspect-ratio:4/5;background:#000"></div>
     <button id="wishTop" style="position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:none;background:rgba(0,0,0,.5);color:#fff;font-size:18px;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">♡</button>
-    <div style="position:absolute;left:14px;bottom:16px;display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:6px 11px 6px 7px;border-radius:500px">
-      <span style="width:22px;height:22px;border-radius:50%;background:#ff3b3b;color:#000;display:grid;place-items:center;font-size:9px;padding-left:2px">▶</span>
-      <span style="font-size:11px;font-weight:600;color:#e6e6e6">Reel · 0:32</span>
-    </div>
     <div id="dots" style="position:absolute;right:14px;bottom:16px;display:flex;gap:6px"></div>
   </div>
 
@@ -125,7 +121,7 @@ a{color:inherit;text-decoration:none}
     <div style="margin-bottom:8px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:11px">
         <span style="font-size:13px;font-weight:700;letter-spacing:.02em">Select Size</span>
-        <button id="sizeGuideBtn" style="background:none;border:none;font-size:12px;font-weight:600;color:#a7a7a7;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:Figtree,sans-serif">Size chart</button>
+        <button id="sizeGuideBtn" style="background:none;border:none;font-size:12px;font-weight:600;color:#a7a7a7;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:Figtree,sans-serif;min-height:44px;padding:0 4px;margin-right:-4px">Size chart</button>
       </div>
       <div id="sizes" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px"></div>
     </div>
@@ -177,7 +173,7 @@ a{color:inherit;text-decoration:none}
   <section style="margin:32px 0 0">
     <div style="display:flex;align-items:baseline;justify-content:space-between;margin:0 0 16px;padding:0 20px">
       <h2 style="font-size:21px;font-weight:800;letter-spacing:-.01em;margin:0">Complete the set</h2>
-      <a href="#" style="font-size:12px;font-weight:700;color:#ff3b3b">See all →</a>
+      <a href="index.html" style="font-size:12px;font-weight:700;color:#ff3b3b">See all →</a>
     </div>
     <div id="recs" style="display:flex;gap:14px;overflow-x:auto;padding:0 20px 4px;scroll-snap-type:x mandatory"></div>
   </section>
@@ -201,13 +197,13 @@ a{color:inherit;text-decoration:none}
 
 <script src="assets/cart.js"></script>
 <script src="assets/cart-drawer.js"></script>
-<script src="assets/site-nav.js?v=8"></script>
+<script src="assets/site-nav.js?v=9"></script>
 <script>
 (function () {
   var WISH_KEY = 'fd_wish_catsuit';
   function wishGet() { try { return localStorage.getItem(WISH_KEY) === '1'; } catch (e) { return false; } }
   function wishSet(v) { try { localStorage.setItem(WISH_KEY, v ? '1' : '0'); } catch (e) {} }
-  var state = { color: 'black', size: null, hero: 0, wish: wishGet(), acc: 'desc', sizeErr: false, toast: false, sizeChart: false };
+  var state = { color: 'black', size: null, hero: 0, wish: wishGet(), acc: 'desc', sizeErr: false, oosMsg: null, toast: false, sizeChart: false };
   var galleries = {
     black: ['assets/product/black-catsuit-1.jpg', 'assets/product/black-catsuit-2.jpg', 'assets/product/black-catsuit-3.jpg', 'assets/product/black-catsuit-4.jpg', 'assets/product/black-catsuit-5.jpg'],
     white: ['assets/product/white-catsuit-1.jpg', 'assets/product/white-catsuit-2.jpg', 'assets/product/white-catsuit-3.jpg', 'assets/product/white-catsuit-4.jpg']
@@ -270,16 +266,19 @@ a{color:inherit;text-decoration:none}
     document.getElementById('sizes').innerHTML = sizes.map(function (s) {
       var sel = state.size === s.label, oos = s.stock === 0;
       var style = 'height:44px;border-radius:6px;font-family:Figtree,sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;cursor:' + (oos ? 'not-allowed' : 'pointer') + ';background:' + (sel ? '#ff3b3b' : 'transparent') + ';color:' + (oos ? '#5a5a5a' : '#fff') + ';border:1px solid ' + (sel ? '#ff3b3b' : (oos ? 'rgba(255,255,255,.08)' : 'rgba(255,255,255,.28)')) + ';text-decoration:' + (oos ? 'line-through' : 'none') + ';transition:.12s';
-      return '<button data-size="' + s.label + '"' + (oos ? ' data-oos="1"' : '') + ' style="' + style + '">' + s.label + '</button>';
+      return '<button data-size="' + s.label + '"' + (oos ? ' data-oos="1" aria-disabled="true" title="Sold out"' : '') + ' aria-label="' + s.label + (oos ? ', sold out' : '') + '" style="' + style + '">' + s.label + '</button>';
     }).join('');
-    document.getElementById('sizeErr').innerHTML = state.sizeErr ? '<p style="margin:10px 0 0;font-size:12px;font-weight:600;color:#ff6b6b">Please select a size to continue.</p>' : '';
+    var msg = state.sizeErr ? 'Please select a size to continue.'
+      : state.oosMsg ? 'Size ' + state.oosMsg + ' is sold out. <a href="made-to-order.html" style="color:#ff6b6b;font-weight:700;text-decoration:underline;text-underline-offset:3px">Build it made to order.</a>'
+      : '';
+    document.getElementById('sizeErr').innerHTML = msg ? '<p style="margin:10px 0 0;font-size:12px;font-weight:600;color:#ff6b6b">' + msg + '</p>' : '';
   }
   function renderAddons() {
     document.getElementById('addons').innerHTML = addons.map(function (a) {
       return '<div style="display:flex;align-items:center;gap:12px;background:#181818;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:13px 15px">' +
         '<div style="flex:1"><div style="font-size:14px;font-weight:700">' + esc(a.title) + '</div><div style="font-size:12px;color:#a7a7a7;font-weight:500">' + esc(a.sub) + '</div></div>' +
         '<div style="font-size:14px;font-weight:800">$' + a.price + '</div>' +
-        '<button data-addon="' + a.id + '" style="flex:0 0 auto;height:36px;padding:0 16px;border:none;border-radius:500px;background:#ff3b3b;color:#fff;font-family:Figtree,sans-serif;font-size:13px;font-weight:800;cursor:pointer">Add</button>' +
+        '<button data-addon="' + a.id + '" aria-label="Add ' + esc(a.title) + '" style="flex:0 0 auto;height:44px;padding:0 18px;border:none;border-radius:500px;background:#ff3b3b;color:#fff;font-family:Figtree,sans-serif;font-size:13px;font-weight:800;cursor:pointer">Add</button>' +
       '</div>';
     }).join('');
   }
@@ -358,8 +357,9 @@ a{color:inherit;text-decoration:none}
     renderGallery(); renderSwatches(); renderMeta();
   });
   document.getElementById('sizes').addEventListener('click', function (e) {
-    var t = e.target.closest('[data-size]'); if (!t || t.getAttribute('data-oos')) return;
-    state.size = t.getAttribute('data-size'); state.sizeErr = false; renderSizes();
+    var t = e.target.closest('[data-size]'); if (!t) return;
+    if (t.getAttribute('data-oos')) { state.oosMsg = t.getAttribute('data-size'); state.sizeErr = false; renderSizes(); return; }
+    state.size = t.getAttribute('data-size'); state.sizeErr = false; state.oosMsg = null; renderSizes();
   });
   document.getElementById('addons').addEventListener('click', function (e) {
     var t = e.target.closest('[data-addon]'); if (t) addAddon(t.getAttribute('data-addon'));
