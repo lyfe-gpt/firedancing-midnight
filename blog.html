@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Journal · Firedancing</title>
 <meta name="description" content="The Firedancing journal. Slitweave care, behind-the-seams notes, festival fits, and the making of hand-cut stagewear.">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -54,7 +54,7 @@ a{color:inherit;text-decoration:none}
     <h3 style="margin:0 0 8px;font-size:19px;font-weight:800">Drops, streams, and new cuts</h3>
     <p style="margin:0 0 16px;font-size:13px;color:#a7a7a7;line-height:1.5">One email when a limited one-of-one drops or a make-along goes live. No noise.</p>
     <div style="display:flex;gap:8px">
-      <input placeholder="you@email.com" style="flex:1;height:46px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#101010;color:#fff;padding:0 14px;font-size:14px;font-family:Figtree,sans-serif" />
+      <input type="email" autocomplete="email" aria-label="Email address" placeholder="you@email.com" style="flex:1;height:46px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#101010;color:#fff;padding:0 14px;font-size:16px;font-family:Figtree,sans-serif" />
       <button style="height:46px;padding:0 18px;border:none;border-radius:10px;background:#ff3b3b;color:#fff;font-family:Figtree,sans-serif;font-size:14px;font-weight:800;cursor:pointer">Join</button>
     </div>
   </div>
@@ -77,7 +77,7 @@ a{color:inherit;text-decoration:none}
   ];
   document.getElementById('posts').innerHTML = posts.map(function (p) {
     return '<a href="#" style="display:flex;gap:14px;align-items:center">' +
-      '<div style="flex:0 0 108px;border-radius:12px;overflow:hidden;background:#000"><img src="' + p.img + '" style="width:108px;height:88px;object-fit:cover;display:block" alt="post" /></div>' +
+      '<div style="flex:0 0 108px;border-radius:12px;overflow:hidden;background:#000"><img src="' + p.img + '" loading="lazy" decoding="async" style="width:108px;height:88px;object-fit:cover;display:block" alt="' + p.title + '" /></div>' +
       '<div style="flex:1;min-width:0">' +
         '<div style="font-size:10px;font-weight:800;letter-spacing:.1em;color:#ff5c5c;margin-bottom:5px">' + p.tag + ' · ' + p.read + '</div>' +
         '<div style="font-size:15px;font-weight:800;line-height:1.2;margin-bottom:4px">' + p.title + '</div>' +

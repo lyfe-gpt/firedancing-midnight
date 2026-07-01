@@ -36,7 +36,7 @@
 
     var body = list.length === 0 ?
       ('<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px 24px;text-align:center">' +
-        '<div style="width:56px;height:56px;border-radius:50%;background:#232323;display:grid;place-items:center;font-size:22px">▦</div>' +
+        '<div style="width:56px;height:56px;border-radius:50%;background:#232323;display:grid;place-items:center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8f8f8f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3.5 5.5V20a1.5 1.5 0 0 0 1.5 1.5h14a1.5 1.5 0 0 0 1.5-1.5V5.5L18 2z"/><path d="M3.5 6.5h17"/><path d="M15.5 10a3.5 3.5 0 0 1-7 0"/></svg></div>' +
         '<div style="color:#fff;font-weight:700;font-size:16px">Your bag is empty</div>' +
         '<div style="color:#8f8f8f;font-size:13px;max-width:220px;line-height:1.5">Add a piece and it\'ll show up here.</div>' +
         '<a href="index.html" data-act="close" style="margin-top:6px;color:#ff3b3b;font-weight:700;font-size:14px">Continue shopping →</a>' +

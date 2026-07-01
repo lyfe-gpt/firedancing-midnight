@@ -4,12 +4,12 @@
   var RED = '#ff3b3b';
 
   var ICON = {
-    menu: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>',
-    search: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>',
-    bag: '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3.5 5.5V20a1.5 1.5 0 0 0 1.5 1.5h14a1.5 1.5 0 0 0 1.5-1.5V5.5L18 2z"/><path d="M3.5 6.5h17"/><path d="M15.5 10a3.5 3.5 0 0 1-7 0"/></svg>',
-    close: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
-    flame: '<svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M12 2c1.2 3.2-.6 5-2.2 6.6C8 10.4 6.5 12 6.5 14.7A5.5 5.5 0 0 0 12 20a5.5 5.5 0 0 0 5.5-5.3c0-2-1-3.6-2-5-.4 .9-1 1.5-1.8 1.8 .9-2.6 .2-6.2-1.7-9.5z"/></svg>',
-    chevron: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>'
+    menu: '<svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>',
+    search: '<svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>',
+    bag: '<svg aria-hidden="true" focusable="false" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3.5 5.5V20a1.5 1.5 0 0 0 1.5 1.5h14a1.5 1.5 0 0 0 1.5-1.5V5.5L18 2z"/><path d="M3.5 6.5h17"/><path d="M15.5 10a3.5 3.5 0 0 1-7 0"/></svg>',
+    close: '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+    flame: '<svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M12 2c1.2 3.2-.6 5-2.2 6.6C8 10.4 6.5 12 6.5 14.7A5.5 5.5 0 0 0 12 20a5.5 5.5 0 0 0 5.5-5.3c0-2-1-3.6-2-5-.4 .9-1 1.5-1.8 1.8 .9-2.6 .2-6.2-1.7-9.5z"/></svg>',
+    chevron: '<svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>'
   };
 
   function logo(size) {
@@ -37,7 +37,7 @@
     return '<div id="megaPanel" style="display:none;position:absolute;left:0;right:0;top:100%;background:#0f0f0f;border-bottom:1px solid rgba(255,255,255,.1);box-shadow:0 24px 50px rgba(0,0,0,.5);z-index:59">' +
       '<div style="max-width:440px;margin:0 auto;padding:20px 20px 22px;display:grid;grid-template-columns:1fr 1fr;gap:20px 16px">' + cols +
       '<a href="product.html" data-nav-link style="grid-column:1 / -1;position:relative;height:120px;border-radius:14px;overflow:hidden;display:block;margin-top:2px">' +
-        '<img src="assets/product/duo-lifestyle.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%" alt="Featured" />' +
+        '<img src="assets/product/duo-lifestyle.jpg" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%" alt="Featured duo drop" />' +
         '<span style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.8),rgba(0,0,0,.15))"></span>' +
         '<span style="position:absolute;left:16px;top:50%;transform:translateY(-50%)"><span style="display:block;font-size:11px;font-weight:800;letter-spacing:.12em;color:' + RED + '">NEW</span><span style="display:block;font-size:16px;font-weight:800">The duo drop →</span></span>' +
       '</a></div></div>';
@@ -69,7 +69,7 @@
         '<div style="max-width:440px;margin:0 auto;padding:16px 16px 20px">' +
           '<div style="display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 14px">' +
             '<span style="color:#8f8f8f;flex:0 0 auto">' + ICON.search + '</span>' +
-            '<input id="searchInput" placeholder="Search catsuits, bodysuits, colours…" style="flex:1;background:none;border:none;outline:none;color:#fff;font-family:Figtree,sans-serif;font-size:15px" />' +
+            '<input id="searchInput" type="search" enterkeyhint="search" aria-label="Search" placeholder="Search catsuits, bodysuits, colours…" style="flex:1;background:none;border:none;outline:none;color:#fff;font-family:Figtree,sans-serif;font-size:16px" />' +
             '<button data-nav-close style="background:none;border:none;color:#8f8f8f;cursor:pointer;flex:0 0 auto">' + ICON.close + '</button>' +
           '</div>' +
           '<div style="margin-top:14px;font-size:11px;font-weight:800;letter-spacing:.1em;color:#8f8f8f">POPULAR</div>' +
@@ -126,7 +126,20 @@
   function injectStyles() {
     if (document.getElementById('nav-kf')) return;
     var s = document.createElement('style'); s.id = 'nav-kf';
-    s.textContent = '@keyframes mcFade{from{opacity:0}to{opacity:1}}@keyframes navSlideL{from{transform:translateX(-100%)}to{transform:translateX(0)}}@keyframes navDrop{from{transform:translateY(-100%);opacity:.4}to{transform:translateY(0);opacity:1}}#site-header a{text-decoration:none}';
+    s.textContent = [
+      '@keyframes mcFade{from{opacity:0}to{opacity:1}}',
+      '@keyframes navSlideL{from{transform:translateX(-100%)}to{transform:translateX(0)}}',
+      '@keyframes navDrop{from{transform:translateY(-100%);opacity:.4}to{transform:translateY(0);opacity:1}}',
+      '#site-header a{text-decoration:none}',
+      /* Mega menu is desktop only. On mobile the hamburger is the nav. */
+      '@media (max-width:699px){#navShopBtn{display:none !important}#megaPanel{display:none !important}}',
+      /* Keyboard focus visibility */
+      'a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #ff5c5c;outline-offset:2px;border-radius:4px}',
+      /* Comfortable tap targets in the header */
+      '#site-header button,#site-header > header a{min-height:40px}',
+      /* Respect reduced motion */
+      '@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}'
+    ].join('');
     document.head.appendChild(s);
   }
 
@@ -140,7 +153,7 @@
     var shopBtn = document.getElementById('navShopBtn');
     var searchBtn = document.getElementById('navSearchBtn');
     if (menuBtn) menuBtn.addEventListener('click', function () { closeAll(); document.getElementById('mobileMenu').style.display = 'block'; });
-    if (searchBtn) searchBtn.addEventListener('click', function () { closeAll(); document.getElementById('searchOverlay').style.display = 'block'; var i = document.getElementById('searchInput'); if (i) setTimeout(function () { i.focus(); }, 60); });
+    if (searchBtn) searchBtn.addEventListener('click', function () { closeAll(); document.getElementById('searchOverlay').style.display = 'block'; var i = document.getElementById('searchInput'); if (i) { setTimeout(function () { i.focus(); }, 60); i.onkeydown = function (e) { if (e.key === 'Enter') location.href = 'product.html'; }; } });
     if (shopBtn) shopBtn.addEventListener('click', function () {
       var mp = document.getElementById('megaPanel'), chev = document.getElementById('navShopChev');
       var open = mp.style.display === 'block';
