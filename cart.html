@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Bag — Midnight</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#121212;color:#fff;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+@keyframes mcFade{from{opacity:0}to{opacity:1}}
+@keyframes mcSlide{from{transform:translateX(100%)}to{transform:translateX(0)}}
+</style>
+</head>
+<body>
+<div style="max-width:440px;margin:0 auto;position:relative;min-height:100vh;background:#121212;padding-bottom:40px;overflow-x:hidden">
+
+  <header style="position:sticky;top:0;z-index:60;background:rgba(0,0,0,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);height:54px;display:flex;align-items:center;padding:0 16px">
+    <a href="index.html" style="font-size:22px;color:#fff;cursor:pointer;line-height:1;text-decoration:none">‹</a>
+    <a href="index.html" style="margin:0 auto;display:flex;align-items:center;gap:8px">
+      <span style="width:26px;height:26px;border-radius:50%;background:#ff3b3b;display:grid;place-items:center;color:#fff;font-weight:900;font-size:15px">M</span>
+      <span style="font-weight:800;font-size:16px;letter-spacing:.16em">MIDNIGHT</span>
+    </a>
+    <div style="width:22px"></div>
+  </header>
+
+  <div style="padding:24px 20px 6px;display:flex;align-items:baseline;gap:10px">
+    <h1 style="font-size:26px;font-weight:900;letter-spacing:-.01em;margin:0">Your Bag</h1>
+    <span id="count" style="font-size:14px;color:#8f8f8f;font-weight:600"></span>
+  </div>
+
+  <div id="body"></div>
+
+</div>
+
+<script src="assets/cart.js"></script>
+<script src="assets/cart-drawer.js"></script>
+<script>
+(function () {
+  var checkoutMsg = false;
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c];});}
+  function render() {
+    var C = window.MidnightCart, list = C ? C.all() : [], sub = C ? C.subtotal() : 0;
+    document.getElementById('count').textContent = (C ? C.count() : 0) + ' item(s)';
+    var body = document.getElementById('body');
+    if (!list.length) {
+      body.innerHTML =
+        '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:70px 24px;text-align:center">' +
+          '<div style="width:64px;height:64px;border-radius:50%;background:#1e1e1e;display:grid;place-items:center;font-size:26px">▦</div>' +
+          '<div style="color:#fff;font-weight:800;font-size:18px">Your bag is empty</div>' +
+          '<p style="color:#8f8f8f;font-size:14px;max-width:250px;line-height:1.5;margin:0">Nothing here yet. Pick a finished piece or build your own.</p>' +
+          '<a href="index.html" style="margin-top:6px;background:#ff3b3b;color:#fff;font-weight:800;font-size:14px;padding:12px 24px;border-radius:500px">Start shopping</a>' +
+        '</div>';
+      return;
+    }
+    var items = list.map(function (it) {
+      return '<div style="display:flex;gap:15px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.09)">' +
+        '<img src="' + esc(it.img) + '" style="width:92px;height:116px;object-fit:cover;border-radius:10px;flex:0 0 auto;background:#000" alt="item" />' +
+        '<div style="flex:1;min-width:0;display:flex;flex-direction:column">' +
+          '<div style="display:flex;justify-content:space-between;gap:10px">' +
+            '<div style="font-size:15px;font-weight:800;color:#fff;line-height:1.25">' + esc(it.title) + '</div>' +
+            '<div style="font-size:15px;font-weight:800;color:#fff;white-space:nowrap">$' + (it.price * it.qty) + '</div>' +
+          '</div>' +
+          '<div style="font-size:12.5px;color:#a7a7a7;font-weight:500;margin:4px 0 6px;line-height:1.45">' + esc(it.variant) + '</div>' +
+          (it.madeToOrder ? '<div style="font-size:11px;font-weight:800;color:#ff5c5c;letter-spacing:.03em;margin-bottom:8px">MADE TO ORDER · 2–4 WEEKS</div>' : '') +
+          '<div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between">' +
+            '<div style="display:flex;align-items:center;border:1px solid rgba(255,255,255,.22);border-radius:500px">' +
+              '<button data-act="dec" data-id="' + esc(it.id) + '" style="width:34px;height:34px;background:none;border:none;color:#fff;font-size:17px;cursor:pointer">−</button>' +
+              '<span style="min-width:28px;text-align:center;font-size:14px;font-weight:700;color:#fff">' + it.qty + '</span>' +
+              '<button data-act="inc" data-id="' + esc(it.id) + '" style="width:34px;height:34px;background:none;border:none;color:#fff;font-size:17px;cursor:pointer">+</button>' +
+            '</div>' +
+            '<button data-act="remove" data-id="' + esc(it.id) + '" style="background:none;border:none;color:#8f8f8f;font-size:13px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:2px">Remove</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+    body.innerHTML =
+      '<div style="padding:12px 20px 0">' + items + '</div>' +
+      '<div style="margin:24px 20px 0;background:#181818;border-radius:16px;padding:22px">' +
+        '<div style="font-size:12px;font-weight:800;letter-spacing:.1em;color:#8f8f8f;margin-bottom:16px">ORDER SUMMARY</div>' +
+        '<div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:11px"><span style="color:#d6d6d6;font-weight:600">Subtotal</span><span style="font-weight:700">$' + sub + '</span></div>' +
+        '<div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:11px"><span style="color:#d6d6d6;font-weight:600">Shipping</span><span style="font-weight:700;color:#ff5c5c">Free</span></div>' +
+        '<div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:14px"><span style="color:#d6d6d6;font-weight:600">Taxes</span><span style="color:#8f8f8f;font-weight:600">Calculated at checkout</span></div>' +
+        '<div style="height:1px;background:rgba(255,255,255,.1);margin:0 0 14px"></div>' +
+        '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px"><span style="font-size:16px;font-weight:800">Estimated total</span><span style="font-size:22px;font-weight:900">$' + sub + '</span></div>' +
+        '<button data-act="checkout" style="width:100%;height:52px;border:none;border-radius:500px;background:#ff3b3b;color:#fff;font-family:Figtree,sans-serif;font-size:15px;font-weight:800;letter-spacing:.02em;cursor:pointer;transition:.15s">Checkout</button>' +
+        '<a href="index.html" style="display:block;text-align:center;margin-top:14px;color:#d6d6d6;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:3px">Continue shopping</a>' +
+      '</div>' +
+      (checkoutMsg ? '<div style="margin:14px 20px 0;background:rgba(255,59,59,.1);border:1px solid rgba(255,59,59,.4);border-radius:12px;padding:14px 16px;font-size:13px;color:#ffb0b0;font-weight:600;text-align:center">Demo checkout — this is where payment would go. ✦</div>' : '');
+  }
+  document.getElementById('body').addEventListener('click', function (e) {
+    var t = e.target.closest('[data-act]'); if (!t) return;
+    var act = t.getAttribute('data-act'), id = t.getAttribute('data-id'), C = window.MidnightCart;
+    if (act === 'checkout') { checkoutMsg = true; render(); return; }
+    var it = C.all().find(function (x) { return x.id === id; });
+    if (act === 'inc' && it) C.setQty(id, it.qty + 1);
+    else if (act === 'dec' && it) C.setQty(id, it.qty - 1);
+    else if (act === 'remove') C.remove(id);
+  });
+  window.addEventListener('midnight:cartchange', render);
+  window.addEventListener('storage', render);
+  render();
+})();
+</script>
+</body>
+</html>

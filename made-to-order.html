@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build your fit — Midnight Made to Order</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#000;color:#fff;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{display:none}
+input,textarea{font-family:Figtree,system-ui,sans-serif}
+@keyframes toastIn{from{transform:translateY(130%);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes mcFade{from{opacity:0}to{opacity:1}}
+@keyframes mcSlide{from{transform:translateX(100%)}to{transform:translateX(0)}}
+</style>
+</head>
+<body>
+<div style="max-width:440px;margin:0 auto;position:relative;min-height:100vh;background:#121212;padding-bottom:96px;overflow-x:hidden">
+
+  <header style="position:sticky;top:0;z-index:60;background:rgba(0,0,0,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);height:54px;display:flex;align-items:center;padding:0 16px">
+    <a href="index.html" style="font-size:20px;color:#fff;cursor:pointer;line-height:1;text-decoration:none">‹</a>
+    <a href="index.html" style="margin:0 auto;display:flex;align-items:center;gap:8px">
+      <span style="width:26px;height:26px;border-radius:50%;background:#ff3b3b;display:grid;place-items:center;color:#fff;font-weight:900;font-size:15px">M</span>
+      <span style="font-weight:800;font-size:16px;letter-spacing:.16em">MIDNIGHT</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:16px">
+      <span style="font-size:17px;color:#d6d6d6;cursor:pointer">⌕</span>
+      <div id="cartBtn" style="position:relative;cursor:pointer">
+        <span style="font-size:18px;color:#fff">▦</span>
+        <span id="cartBadge" style="display:none;position:absolute;top:-7px;right:-8px;background:#ff3b3b;color:#fff;font-size:9px;font-weight:800;min-width:15px;height:15px;border-radius:500px;place-items:center;padding:0 3px"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- GALLERY -->
+  <div style="position:relative;background:#000">
+    <div id="gallery" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch"></div>
+    <div style="position:absolute;left:14px;top:14px;display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 12px;border-radius:500px">
+      <span style="width:7px;height:7px;border-radius:50%;background:#ff3b3b"></span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:.04em;color:#e6e6e6">MADE TO ORDER</span>
+    </div>
+    <div id="dots" style="position:absolute;right:14px;bottom:16px;display:flex;gap:6px"></div>
+  </div>
+
+  <!-- TITLE -->
+  <div style="padding:20px 20px 0">
+    <h1 style="font-size:25px;font-weight:800;line-height:1.1;letter-spacing:-.01em;margin:0 0 5px">Groove Lace-Up Catsuit</h1>
+    <p style="margin:0 0 16px;color:#a7a7a7;font-size:14px;font-weight:500">Hand-finished to your spec · from $130</p>
+  </div>
+
+  <!-- LEAD TIME BANNER -->
+  <div style="margin:0 20px 8px;display:flex;align-items:center;gap:12px;background:rgba(255,59,59,.09);border:1px solid rgba(255,59,59,.3);border-radius:12px;padding:14px 16px">
+    <span style="width:34px;height:34px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:15px">✂</span>
+    <div>
+      <div style="font-size:13px;font-weight:800;color:#ff3b3b">Made to order — ships in 2–4 weeks</div>
+      <div style="font-size:12px;color:#a7a7a7;font-weight:500">Each piece is cut and sewn for you after checkout.</div>
+    </div>
+  </div>
+
+  <!-- ERROR BANNER -->
+  <div id="errBanner"></div>
+
+  <!-- CONFIGURATOR -->
+  <div id="configurator" style="padding:20px">
+
+    <div style="margin-bottom:26px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:11px"><span style="font-size:13px;font-weight:800;letter-spacing:.02em">Silhouette</span><span style="color:#ff3b3b;font-weight:800">*</span></div>
+      <div id="silOpts" style="display:flex;gap:10px"></div>
+    </div>
+
+    <div style="margin-bottom:26px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:11px"><span style="font-size:13px;font-weight:800;letter-spacing:.02em">Dye finish</span><span style="color:#ff3b3b;font-weight:800">*</span></div>
+      <div id="dyeOpts" style="display:flex;flex-direction:column;gap:9px"></div>
+    </div>
+
+    <div style="margin-bottom:26px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:11px"><span style="font-size:13px;font-weight:800;letter-spacing:.02em">Ties</span><span style="color:#ff3b3b;font-weight:800">*</span></div>
+      <div id="tiesOpts" style="display:flex;gap:8px"></div>
+    </div>
+
+    <!-- CHAIN BELT TOGGLE -->
+    <div style="margin-bottom:28px;display:flex;align-items:center;gap:14px;background:#181818;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:15px 16px">
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px"><span style="font-size:14px;font-weight:700">Chain belt</span><span style="font-size:12px;font-weight:800;color:#ff3b3b">+$25</span></div>
+        <div style="font-size:12px;color:#a7a7a7;font-weight:500;margin-top:2px">Detachable hardware belt with O-ring.</div>
+      </div>
+      <button id="beltBtn" aria-label="toggle chain belt"><span id="beltKnob"></span></button>
+    </div>
+
+    <div style="height:1px;background:rgba(255,255,255,.1);margin:0 0 26px"></div>
+    <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:#ff3b3b;margin-bottom:20px">FIT &amp; DETAILS — NO EXTRA COST</div>
+
+    <div style="margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px"><span style="font-size:13px;font-weight:800">Length</span><span style="color:#ff3b3b;font-weight:800">*</span></div>
+      <div id="lengthOpts" style="display:flex;gap:8px"></div>
+      <div id="errLength"></div>
+    </div>
+
+    <div style="margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px"><span style="font-size:13px;font-weight:800">Neckline</span><span style="color:#ff3b3b;font-weight:800">*</span></div>
+      <div id="necklineOpts" style="display:flex;gap:8px"></div>
+      <div id="errNeckline"></div>
+    </div>
+
+    <div style="margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px"><span style="font-size:13px;font-weight:800">Cleavage depth</span><span style="color:#ff3b3b;font-weight:800">*</span></div>
+      <div id="cleavageOpts" style="display:flex;gap:8px"></div>
+      <div id="errCleavage"></div>
+    </div>
+
+    <div style="margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px"><span style="font-size:13px;font-weight:800">Side-slit width</span><span style="color:#ff3b3b;font-weight:800">*</span></div>
+      <div id="slitOpts" style="display:flex;gap:8px"></div>
+      <div id="errSlit"></div>
+    </div>
+
+    <div style="margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px"><span style="font-size:13px;font-weight:800">Colour</span><span style="color:#ff3b3b;font-weight:800">*</span><span id="colorLabel" style="font-size:12px;color:#a7a7a7;font-weight:600"></span></div>
+      <div id="colorOpts" style="display:flex;gap:18px"></div>
+      <div id="errColor"></div>
+    </div>
+
+    <div style="margin-bottom:24px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:6px"><span style="font-size:13px;font-weight:800">Size</span><span style="color:#ff3b3b;font-weight:800">*</span></div>
+        <a href="#" style="font-size:12px;font-weight:600;color:#a7a7a7;text-decoration:underline;text-underline-offset:3px">Size chart</a>
+      </div>
+      <div id="sizeOpts" style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px"></div>
+      <div id="errSize"></div>
+    </div>
+
+    <!-- CUSTOM MEASUREMENTS (static — no re-render, preserves focus) -->
+    <div style="margin-bottom:24px">
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px"><span style="font-size:13px;font-weight:800">Custom measurements</span><span style="font-size:11px;color:#8f8f8f;font-weight:600">Optional</span></div>
+      <p style="margin:0 0 12px;font-size:12px;color:#a7a7a7;font-weight:500">Add these and we'll tailor the fit to you (inches).</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+        <label style="display:block"><span style="display:block;font-size:11px;color:#8f8f8f;font-weight:700;margin-bottom:6px">BUST</span><input id="bust" inputmode="decimal" placeholder="—" style="width:100%;height:46px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#181818;color:#fff;text-align:center;font-size:15px;font-weight:600" /></label>
+        <label style="display:block"><span style="display:block;font-size:11px;color:#8f8f8f;font-weight:700;margin-bottom:6px">WAIST</span><input id="waist" inputmode="decimal" placeholder="—" style="width:100%;height:46px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#181818;color:#fff;text-align:center;font-size:15px;font-weight:600" /></label>
+        <label style="display:block"><span style="display:block;font-size:11px;color:#8f8f8f;font-weight:700;margin-bottom:6px">HIP</span><input id="hip" inputmode="decimal" placeholder="—" style="width:100%;height:46px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#181818;color:#fff;text-align:center;font-size:15px;font-weight:600" /></label>
+      </div>
+    </div>
+
+    <div style="margin-bottom:8px">
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:10px"><span style="font-size:13px;font-weight:800">Notes to maker</span><span style="font-size:11px;color:#8f8f8f;font-weight:600">Optional</span></div>
+      <textarea id="notes" rows="3" placeholder="Anything else we should know — reference looks, event date, lacing preferences…" style="width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#181818;color:#fff;padding:12px 14px;font-size:14px;font-weight:500;resize:vertical;line-height:1.5"></textarea>
+    </div>
+  </div>
+
+  <!-- ORDER SUMMARY -->
+  <div style="margin:8px 20px 0;background:#181818;border-radius:14px;padding:20px">
+    <div style="font-size:12px;font-weight:800;letter-spacing:.1em;color:#8f8f8f;margin-bottom:14px">YOUR BUILD</div>
+    <div id="summary"></div>
+    <div style="height:1px;background:rgba(255,255,255,.1);margin:14px 0"></div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:15px;font-weight:800">Total</span><span id="totalSummary" style="font-size:20px;font-weight:800"></span></div>
+    <div style="margin-top:12px;font-size:12px;color:#a7a7a7;font-weight:500;line-height:1.5">Fit &amp; detail choices ship as maker notes with your order at no extra cost.</div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section style="margin:32px 20px 0">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:#ff3b3b;margin-bottom:16px">HOW MADE-TO-ORDER WORKS</div>
+    <div style="display:flex;gap:14px;margin-bottom:14px"><span style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">1</span><div><div style="font-size:14px;font-weight:700">Build &amp; checkout</div><div style="font-size:13px;color:#a7a7a7;line-height:1.45">Your spec travels with the order to our maker.</div></div></div>
+    <div style="display:flex;gap:14px;margin-bottom:14px"><span style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">2</span><div><div style="font-size:14px;font-weight:700">We cut &amp; sew</div><div style="font-size:13px;color:#a7a7a7;line-height:1.45">Hand-finished to your fit — you'll get a confirmation email.</div></div></div>
+    <div style="display:flex;gap:14px"><span style="width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:#ff3b3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">3</span><div><div style="font-size:14px;font-weight:700">Ships in 2–4 weeks</div><div style="font-size:13px;color:#a7a7a7;line-height:1.45">Made-to-order pieces are final sale.</div></div></div>
+  </section>
+
+  <footer style="margin-top:40px;border-top:1px solid rgba(255,255,255,.08);background:#0a0a0a;padding:30px 20px 28px">
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:10px">
+      <span style="width:24px;height:24px;border-radius:50%;background:#ff3b3b;display:grid;place-items:center;color:#fff;font-weight:900;font-size:13px">M</span>
+      <span style="font-weight:800;font-size:14px;letter-spacing:.16em">MIDNIGHT</span>
+    </div>
+    <p style="margin:0 0 4px;font-size:12px;color:#8f8f8f;line-height:1.55">Performance-grade stagewear, made to order for artists who live after dark.</p>
+    <div style="margin-top:20px;font-size:11px;color:#6f6f6f;font-weight:500">© 2026 Midnight Stagewear · Privacy · Terms</div>
+  </footer>
+
+  <!-- STICKY ADD TO CART -->
+  <div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(440px,100%);z-index:80;background:rgba(10,10,10,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.12);padding:12px 16px;display:flex;align-items:center;gap:12px">
+    <div style="min-width:70px">
+      <div style="font-size:10px;color:#8f8f8f;font-weight:700;letter-spacing:.04em">TOTAL</div>
+      <div id="totalSticky" style="font-size:19px;font-weight:800;line-height:1.05"></div>
+    </div>
+    <button id="addBtn" style="flex:1;height:50px;border:none;border-radius:500px;background:#ff3b3b;color:#fff;font-family:Figtree,sans-serif;font-size:15px;font-weight:800;letter-spacing:.02em;cursor:pointer;transition:.15s">Add to Cart</button>
+  </div>
+
+  <div id="toastRoot"></div>
+</div>
+
+<script src="assets/cart.js"></script>
+<script src="assets/cart-drawer.js"></script>
+<script>
+(function () {
+  var state = {
+    silhouette: 'catsuit', dye: 'none', ties: 'cloth', belt: false,
+    length: null, neckline: null, cleavage: null, slit: null, color: null, size: null,
+    showErr: false, hero: 0, toast: false
+  };
+  var galleries = {
+    black: ['assets/product/black-catsuit-1.jpg', 'assets/product/duo-lifestyle.jpg', 'assets/product/black-bodysuit-2.jpg'],
+    white: ['assets/product/white-catsuit-1.jpg', 'assets/product/duo-lifestyle.jpg']
+  };
+  var colors = [
+    { key: 'black', label: 'Black', hex: '#0a0a0a' },
+    { key: 'white', label: 'White', hex: '#e9e9ec' }
+  ];
+  var cfg = {
+    length: ['Standard', 'Shorter', 'Longer'],
+    neckline: ['Scoop neck', 'Spaghetti strap'],
+    cleavage: ['Standard', 'Plunge'],
+    slit: ['Narrow', 'Medium', 'Wide'],
+    size: ['XS', 'S', 'M', 'L', 'XL']
+  };
+  var dyeLabelMap = { none: 'None', tie: 'Tie-dye', bleach: 'Bleach-dye' };
+
+  var gallery = document.getElementById('gallery');
+  var galColor = null, toastTimer = null;
+
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c];});}
+  function set(k, v) { state[k] = v; render(); }
+  function total() {
+    return (state.silhouette === 'bodysuit' ? 130 : 150) + (state.dye === 'none' ? 0 : 40) + (state.ties === 'metal' ? 25 : 0) + (state.belt ? 25 : 0);
+  }
+  function missing() {
+    var out = [];
+    if (!state.length) out.push('Length');
+    if (!state.neckline) out.push('Neckline');
+    if (!state.cleavage) out.push('Cleavage');
+    if (!state.slit) out.push('Slit');
+    if (!state.color) out.push('Colour');
+    if (!state.size) out.push('Size');
+    return out;
+  }
+
+  function cardsHtml(key, opts) {
+    var cur = state[key];
+    return opts.map(function (o) {
+      var sel = cur === o.val;
+      var boxStyle = 'flex:1;display:flex;align-items:center;gap:11px;padding:14px;border-radius:12px;cursor:pointer;text-align:left;color:#fff;background:' + (sel ? 'rgba(255,59,59,.08)' : '#181818') + ';border:1px solid ' + (sel ? '#ff3b3b' : 'rgba(255,255,255,.12)') + ';transition:.15s';
+      var dotStyle = 'width:20px;height:20px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;background:' + (sel ? '#ff3b3b' : 'transparent') + ';color:' + (sel ? '#fff' : 'transparent') + ';border:' + (sel ? 'none' : '2px solid rgba(255,255,255,.35)');
+      return '<button data-k="' + key + '" data-v="' + esc(o.val) + '" style="' + boxStyle + '">' +
+        '<span style="' + dotStyle + '">✓</span>' +
+        '<span style="font-size:14px;font-weight:700">' + esc(o.label) + '</span>' +
+        '<span style="margin-left:auto;font-size:14px;font-weight:800;color:#fff">' + esc(o.price) + '</span>' +
+      '</button>';
+    }).join('');
+  }
+
+  function segHtml(key, opts) {
+    var cur = state[key];
+    return opts.map(function (o) {
+      var val = o.val !== undefined ? o.val : o;
+      var label = o.label !== undefined ? o.label : o;
+      var sel = cur === val;
+      var style = 'flex:1;min-width:0;min-height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:6px 4px;border-radius:8px;cursor:pointer;font-family:Figtree,sans-serif;font-size:13px;font-weight:600;background:' + (sel ? '#ff3b3b' : 'transparent') + ';color:#fff;border:1px solid ' + (sel ? '#ff3b3b' : 'rgba(255,255,255,.26)') + ';transition:.12s';
+      var price = o.price ? '<span style="font-size:11px;font-weight:700;color:#fff">' + esc(o.price) + '</span>' : '';
+      return '<button data-k="' + key + '" data-v="' + esc(val) + '" style="' + style + '"><span>' + esc(label) + '</span>' + price + '</button>';
+    }).join('');
+  }
+
+  function colorHtml() {
+    return colors.map(function (c) {
+      var sel = state.color === c.key;
+      var sw = 'width:46px;height:46px;border-radius:50%;background:' + c.hex + ';border:2px solid ' + (sel ? '#ff3b3b' : 'rgba(255,255,255,.25)') + ';box-shadow:' + (sel ? '0 0 0 3px rgba(255,59,59,.25)' : 'none') + ';transition:.15s';
+      var lab = 'font-size:11px;font-weight:700;color:' + (sel ? '#fff' : '#8f8f8f');
+      return '<button data-k="color" data-v="' + c.key + '" style="background:none;border:none;padding:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:7px"><span style="' + sw + '"></span><span style="' + lab + '">' + esc(c.label) + '</span></button>';
+    }).join('');
+  }
+
+  function errP(txt) { return '<p style="margin:8px 0 0;font-size:12px;font-weight:600;color:#ff6b6b">' + txt + '</p>'; }
+
+  function renderGallery() {
+    var gkey = state.color || 'black';
+    if (gkey === galColor) return;
+    galColor = gkey;
+    var imgs = galleries[gkey];
+    gallery.innerHTML = imgs.map(function (src) {
+      return '<img src="' + src + '" alt="Groove Lace-Up Catsuit" style="flex:0 0 100%;width:100%;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:center;display:block" />';
+    }).join('');
+    gallery.scrollLeft = 0; state.hero = 0;
+    renderDots();
+  }
+  function renderDots() {
+    var imgs = galleries[state.color || 'black'];
+    var hero = Math.min(state.hero, imgs.length - 1);
+    document.getElementById('dots').innerHTML = imgs.map(function (src, i) {
+      return '<span data-dot="' + i + '" style="height:6px;border-radius:3px;cursor:pointer;transition:.2s;width:' + (i === hero ? '20px' : '6px') + ';background:' + (i === hero ? '#ff3b3b' : 'rgba(255,255,255,.5)') + '"></span>';
+    }).join('');
+  }
+
+  function render() {
+    renderGallery();
+    document.getElementById('silOpts').innerHTML = cardsHtml('silhouette', [
+      { val: 'bodysuit', label: 'Bodysuit', price: '$130' },
+      { val: 'catsuit', label: 'Catsuit', price: '$150' }
+    ]);
+    document.getElementById('dyeOpts').innerHTML = cardsHtml('dye', [
+      { val: 'none', label: 'None', price: 'Included' },
+      { val: 'tie', label: 'Tie-dye', price: '+$40' },
+      { val: 'bleach', label: 'Bleach-dye', price: '+$40' }
+    ]);
+    document.getElementById('tiesOpts').innerHTML = segHtml('ties', [
+      { val: 'cloth', label: 'Cloth ties' },
+      { val: 'metal', label: 'Metal ties', price: '+$25' }
+    ]);
+    document.getElementById('lengthOpts').innerHTML = segHtml('length', cfg.length);
+    document.getElementById('necklineOpts').innerHTML = segHtml('neckline', cfg.neckline);
+    document.getElementById('cleavageOpts').innerHTML = segHtml('cleavage', cfg.cleavage);
+    document.getElementById('slitOpts').innerHTML = segHtml('slit', cfg.slit);
+    document.getElementById('sizeOpts').innerHTML = segHtml('size', cfg.size);
+    document.getElementById('colorOpts').innerHTML = colorHtml();
+
+    // belt toggle
+    document.getElementById('beltBtn').setAttribute('style', 'width:52px;height:30px;flex:0 0 auto;border-radius:500px;border:none;cursor:pointer;position:relative;transition:.18s;background:' + (state.belt ? '#ff3b3b' : '#3a3a3a'));
+    document.getElementById('beltKnob').setAttribute('style', 'position:absolute;top:3px;left:' + (state.belt ? '25px' : '3px') + ';width:24px;height:24px;border-radius:50%;background:#fff;transition:.18s');
+
+    // color label
+    document.getElementById('colorLabel').textContent = state.color ? '— ' + (colors.find(function (c) { return c.key === state.color; }) || {}).label : '';
+
+    // errors
+    var miss = missing();
+    document.getElementById('errBanner').innerHTML = (state.showErr && miss.length) ?
+      ('<div style="margin:12px 20px 0;background:rgba(255,90,90,.1);border:1px solid rgba(255,90,90,.45);border-radius:12px;padding:13px 15px">' +
+        '<div style="font-size:13px;font-weight:800;color:#ff6b6b;margin-bottom:3px">Almost there — a few choices left</div>' +
+        '<div style="font-size:12px;color:#ffb0b0;font-weight:600">Please select: ' + miss.join(', ') + '</div></div>') : '';
+    document.getElementById('errLength').innerHTML = (state.showErr && !state.length) ? errP('Please choose a length.') : '';
+    document.getElementById('errNeckline').innerHTML = (state.showErr && !state.neckline) ? errP('Please choose a neckline.') : '';
+    document.getElementById('errCleavage').innerHTML = (state.showErr && !state.cleavage) ? errP('Please choose a cleavage depth.') : '';
+    document.getElementById('errSlit').innerHTML = (state.showErr && !state.slit) ? errP('Please choose a slit width.') : '';
+    document.getElementById('errColor').innerHTML = (state.showErr && !state.color) ? errP('Please choose a colour.') : '';
+    document.getElementById('errSize').innerHTML = (state.showErr && !state.size) ? errP('Please choose a size.') : '';
+
+    // summary
+    var silLabel = state.silhouette === 'bodysuit' ? 'Bodysuit' : 'Catsuit';
+    var silPrice = state.silhouette === 'bodysuit' ? '$130' : '$150';
+    var rows = '<div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:10px"><span style="color:#d6d6d6;font-weight:600">' + silLabel + '</span><span style="font-weight:700">' + silPrice + '</span></div>';
+    if (state.dye !== 'none') rows += '<div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:10px"><span style="color:#d6d6d6;font-weight:600">' + dyeLabelMap[state.dye] + ' dye</span><span style="font-weight:700;color:#fff">+$40</span></div>';
+    if (state.ties === 'metal') rows += '<div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:10px"><span style="color:#d6d6d6;font-weight:600">Metal ties</span><span style="font-weight:700;color:#fff">+$25</span></div>';
+    if (state.belt) rows += '<div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:10px"><span style="color:#d6d6d6;font-weight:600">Chain belt</span><span style="font-weight:700;color:#fff">+$25</span></div>';
+    document.getElementById('summary').innerHTML = rows;
+
+    var t = '$' + total();
+    document.getElementById('totalSummary').textContent = t;
+    document.getElementById('totalSticky').textContent = t;
+
+    // cart badge
+    var c = window.MidnightCart ? window.MidnightCart.count() : 0;
+    var b = document.getElementById('cartBadge');
+    b.textContent = c; b.style.display = c > 0 ? 'grid' : 'none';
+
+    renderToast();
+  }
+
+  function renderToast() {
+    var r = document.getElementById('toastRoot');
+    if (!state.toast) { r.innerHTML = ''; return; }
+    var silLabel = state.silhouette === 'bodysuit' ? 'Bodysuit' : 'Catsuit';
+    var colorLabel = (colors.find(function (c) { return c.key === state.color; }) || {}).label || '';
+    r.innerHTML = '<div style="position:fixed;left:50%;bottom:86px;transform:translateX(-50%);z-index:100;width:min(408px,calc(100% - 32px));background:#ff3b3b;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;box-shadow:0 16px 40px rgba(0,0,0,.5);animation:toastIn .32s cubic-bezier(.2,.8,.2,1)">' +
+      '<span style="width:36px;height:36px;flex:0 0 auto;border-radius:50%;background:#000;color:#ff3b3b;display:grid;place-items:center;font-size:16px">✓</span>' +
+      '<div style="flex:1;color:#fff;min-width:0"><div style="font-size:10px;font-weight:800;letter-spacing:.06em;opacity:.7">ADDED — MADE TO ORDER</div>' +
+      '<div style="font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(silLabel) + ' · ' + esc(colorLabel) + ' · ' + esc(state.size || '') + '</div></div>' +
+      '<a href="cart.html" style="background:#000;color:#fff;border:none;border-radius:500px;padding:9px 15px;font-size:12px;font-weight:800;cursor:pointer;flex:0 0 auto;text-decoration:none">View Cart</a></div>';
+  }
+
+  function addToCart() {
+    if (missing().length) { state.showErr = true; render(); document.getElementById('errBanner').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    var color = (colors.find(function (c) { return c.key === state.color; }) || {}).label;
+    var sil = state.silhouette === 'bodysuit' ? 'Bodysuit' : 'Catsuit';
+    var variant = [sil, color, state.size, state.dye !== 'none' ? dyeLabelMap[state.dye] : '', state.ties === 'metal' ? 'Metal ties' : '', state.belt ? 'Chain belt' : ''].filter(Boolean).join(' · ');
+    var img = galleries[state.color || 'black'][0];
+    var fit = {
+      bust: document.getElementById('bust').value.trim(),
+      waist: document.getElementById('waist').value.trim(),
+      hip: document.getElementById('hip').value.trim(),
+      notes: document.getElementById('notes').value.trim()
+    };
+    var C = window.MidnightCart;
+    if (C) {
+      C.add({ id: 'mto|' + variant, title: 'Groove Lace-Up Catsuit', variant: variant, price: total(), img: img, madeToOrder: true, fit: fit });
+      C.open();
+    }
+    state.showErr = false;
+    state.toast = true; render();
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { state.toast = false; renderToast(); }, 3200);
+  }
+
+  // events
+  document.getElementById('configurator').addEventListener('click', function (e) {
+    var t = e.target.closest('[data-k]'); if (!t) return;
+    set(t.getAttribute('data-k'), t.getAttribute('data-v'));
+  });
+  document.getElementById('beltBtn').addEventListener('click', function () { state.belt = !state.belt; render(); });
+  document.getElementById('addBtn').addEventListener('click', addToCart);
+  document.getElementById('cartBtn').addEventListener('click', function () { window.MidnightCart.open(); });
+  gallery.addEventListener('scroll', function () {
+    var w = gallery.clientWidth || 1, i = Math.round(gallery.scrollLeft / w);
+    if (i !== state.hero) { state.hero = i; renderDots(); }
+  });
+  document.getElementById('dots').addEventListener('click', function (e) {
+    var d = e.target.closest('[data-dot]'); if (!d) return;
+    var i = +d.getAttribute('data-dot');
+    gallery.scrollTo({ left: i * gallery.clientWidth, behavior: 'smooth' });
+  });
+  window.addEventListener('midnight:cartchange', render);
+  window.addEventListener('storage', render);
+
+  render();
+})();
+</script>
+</body>
+</html>
